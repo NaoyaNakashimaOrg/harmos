@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.nn.harmos.domain.repository.common.AccountRepository">
+	
+	<select id="findOne" parameterType="String" resultType="com.nn.harmos.domain.model.common.UserAccount">
+		/* UserAccountRepository.findOne */
+		SELECT
+			A.USER_CD
+		   ,A.PASSWORD
+		   ,A.AUTH_CD
+		   ,A.LAST_LOGIN_DATE
+		   ,B.USER_NAME_KANJI_SEI
+		   ,B.USER_NAME_KANJI_MEI
+		FROM
+			TH0001_USER_ACCOUNT A
+				INNER JOIN TH0002_USER_DETAIL B
+				ON A.USER_CD = B.USER_CD
+				AND A.RONRI_SAKUJO_FLG = '0'
+		WHERE
+			A.USER_CD = #{userCd}
+	</select>
+    
+</mapper>

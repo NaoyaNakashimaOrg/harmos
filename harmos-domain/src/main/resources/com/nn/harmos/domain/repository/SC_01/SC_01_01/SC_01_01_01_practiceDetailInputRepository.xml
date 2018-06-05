@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.nn.harmos.domain.repository.SC_01.SC_01_01.SC_01_01_01_practiceDetailInputRepository">
+	
+	<select id="numberingPracticeMngNo" resultType="String">
+		/* SC_01_01_01_practiceDetailInputRepository.numberingPracticeMngNo */
+		SELECT FNC0101_001_NUMBERING_PRACTICE_NO
+		FROM DUAL
+	</select>
+	
+	<insert id="insertPracticeMng">
+		/* SC_01_01_01_practiceDetailInputRepository.insertPractice */
+		INSERT INTO TH0101_PRACTICE_MNG
+		VALUES(
+		#{form.practiceMngNo},
+		#{form.overview},
+		'1',
+		#{form.detail},
+		#{form.memo},
+		1,
+		'0',
+		SYSDATE,
+		#{account.userCd},
+		SYSDATE,
+		#{account.userCd}
+		)
+	</insert>
+	
+	<insert id="insertPracticeModule">
+		/* SC_01_01_01_practiceDetailInputRepository.insertPracticeModule */
+		INSERT INTO TH0102_PRACTICE_MODULE
+		VALUES(
+		#{practiceMngNo},
+		#{index},
+		#{overview},
+		#{moduleName},
+		#{module},
+		1,
+		'0',
+		SYSDATE,
+		#{account.userCd},
+		SYSDATE,
+		#{account.userCd}
+		)
+	</insert>
+	
+	<insert id="insertPracticeBibliography">
+		/* SC_01_01_01_practiceDetailInputRepository.insertPracticeBibliography */
+		INSERT INTO TH0103_PRACTICE_BIBLIOGRAPHY
+		VALUES(
+		#{practiceMngNo},
+		#{index},
+		#{form.name},
+		#{form.publisher},
+		1,
+		'0',
+		SYSDATE,
+		#{account.userCd},
+		SYSDATE,
+		#{account.userCd}
+		)
+	</insert>
+	
+	<insert id="insertPracticeWebsite">
+		/* SC_01_01_01_practiceDetailInputRepository.insertPracticeWebsite */
+		INSERT INTO TH0104_PRACTICE_WEBSITE
+		VALUES(
+		#{practiceMngNo},
+		#{index},
+		#{form.overview},
+		#{form.url},
+		1,
+		'0',
+		SYSDATE,
+		#{account.userCd},
+		SYSDATE,
+		#{account.userCd}
+		)
+	</insert>
+	
+    <insert id="insertPracticeDocment">
+		/* SC_01_01_01_practiceDetailInputRepository.insertPracticeDocment */
+		INSERT INTO TH0105_PRACTICE_DOCUMENT
+		VALUES(
+		#{practiceMngNo},
+		#{index},
+		#{overview},
+		#{documentName},
+		#{document},
+		1,
+		'0',
+		SYSDATE,
+		#{account.userCd},
+		SYSDATE,
+		#{account.userCd}
+		)
+	</insert>
+	
+</mapper>

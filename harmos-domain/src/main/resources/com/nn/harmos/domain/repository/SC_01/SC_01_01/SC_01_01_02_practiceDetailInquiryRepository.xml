@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.nn.harmos.domain.repository.SC_01.SC_01_01.SC_01_01_02_practiceDetailInquiryRepository">
+	
+	<select id="getPracticeMng" resultType="com.nn.harmos.domain.model.SC_01.SC_01_01.SC_01_01_02_practiceDetailInquiry.bean.PracticeMng">
+		/* SC_01_01_02_practiceDetailInquiryRepository.getPracticeMng */
+		SELECT 
+		   A.PRACTICE_MNG_NO
+		  ,A.OVERVIEW
+		  ,A.CATEGORY
+		  ,A.DETAIL
+		  ,A.MEMO
+		  ,A.VERSION
+        FROM 
+		   TH0101_PRACTICE_MNG A
+	    WHERE
+	        A.PRACTICE_MNG_NO = #{practiceMngNo}
+	    AND A.RONRI_SAKUJO_FLG = '0' /* 無効 */
+	</select>
+	
+	<select id="getPracticeModule" resultType="com.nn.harmos.domain.model.SC_01.SC_01_01.SC_01_01_02_practiceDetailInquiry.bean.PracticeModule">
+		/* SC_01_01_02_practiceDetailInquiryRepository.getPracticeModule */
+		SELECT 
+		   A.MODULE_NO
+		  ,A.MODULE_OVERVIEW
+		  ,A.MODULE_NAME
+        FROM 
+		   TH0102_PRACTICE_MODULE A
+	    WHERE
+	        A.PRACTICE_MNG_NO = #{practiceMngNo}
+	    AND A.RONRI_SAKUJO_FLG = '0' /* 無効 */
+	    ORDER BY
+	        A.MODULE_NO
+	</select>
+	
+	<select id="getPracticeBibliography" resultType="com.nn.harmos.domain.model.SC_01.SC_01_01.SC_01_01_02_practiceDetailInquiry.bean.PracticeBibliography">
+		/* SC_01_01_02_practiceDetailInquiryRepository.getPracticeBibliography */
+		SELECT 
+		   A.BIBLIOGRAPHY_NO
+		  ,A.BIBLIOGRAPHY_NAME
+		  ,A.PUBLISHER
+        FROM 
+		   TH0103_PRACTICE_BIBLIOGRAPHY A
+	    WHERE
+	        A.PRACTICE_MNG_NO = #{practiceMngNo}
+	    AND A.RONRI_SAKUJO_FLG = '0' /* 無効 */
+	    ORDER BY
+	        A.BIBLIOGRAPHY_NO
+	</select>
+	
+	<select id="getPracticeWebsite" resultType="com.nn.harmos.domain.model.SC_01.SC_01_01.SC_01_01_02_practiceDetailInquiry.bean.PracticeWebsite">
+		/* SC_01_01_02_practiceDetailInquiryRepository.getPracticeWebsite */
+		SELECT 
+		   A.WEBSITE_NO
+		  ,A.WEBSITE_OVERVIEW
+		  ,A.WEBSITE_URL
+        FROM 
+		   TH0104_PRACTICE_WEBSITE A
+	    WHERE
+	        A.PRACTICE_MNG_NO = #{practiceMngNo}
+	    AND A.RONRI_SAKUJO_FLG = '0' /* 無効 */
+	    ORDER BY
+	        A.WEBSITE_NO
+	</select>
+	
+	<select id="getPracticeDocument" resultType="com.nn.harmos.domain.model.SC_01.SC_01_01.SC_01_01_02_practiceDetailInquiry.bean.PracticeDocument">
+		/* SC_01_01_02_practiceDetailInquiryRepository.getPracticeDocument */
+		SELECT 
+		   A.DOCUMENT_NO
+		  ,A.DOCUMENT_OVERVIEW
+		  ,A.DOCUMENT_NAME
+        FROM 
+		   TH0105_PRACTICE_DOCUMENT A
+	    WHERE
+	        A.PRACTICE_MNG_NO = #{practiceMngNo}
+	    AND A.RONRI_SAKUJO_FLG = '0' /* 無効 */
+	    ORDER BY
+	        A.DOCUMENT_NO
+	</select>
+	
+</mapper>

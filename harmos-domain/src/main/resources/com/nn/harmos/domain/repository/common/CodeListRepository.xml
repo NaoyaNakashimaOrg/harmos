@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.nn.harmos.domain.repository.common.CodeListRepository">
+	
+	<select id="getKbnCodeList" resultType="com.nn.harmos.domain.model.common.fw.dto.KbnCode">
+		/* CodeListRepository.getKbnCodeList */
+		SELECT 
+			 KUBUN_CD
+			,KUBUN_NAME
+			,KUBUN_BETSU_NAME1
+			,KUBUN_BETSU_NAME2
+			,KUBUN_BETSU_NAME3
+			,PARENT_CD
+		FROM 
+			MH0001_INITIAL_CD
+		WHERE 
+			BUNRUI_CD = #{bunruiCd}
+		AND RONRI_SAKUJO_FLG = '0'
+	</select>
+	
+</mapper>
