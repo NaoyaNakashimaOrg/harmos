@@ -32,7 +32,7 @@ public class SC_01_01_01_practiceDetailInput_Controller {
 	protected Mapper beanMapper;
 
 	/**
-	 * サンプル登録フォーム表示サービス(test)
+	 * サンプル登録フォーム表示サービス
 	 */
 	@Inject
 	SC_01_01_01_001_initFormService initFormService;
