@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>メンバーの登録</title>
+<link href="../common/css/bootstrap.min.css" rel="stylesheet">
+<link href="../common/css/harmosCommon.css" rel="stylesheet">
+</head>
+<body>
+	<div class="navbar navbar-default">
+		<div class="container">
+			<div class="navbar-header">
+				<a href="../BU_00_common/SC_00_01_02_harmosHome.html" class="navbar-brand">Harmos</a>
+				<button class="navbar-toggle" type="button" data-toggle="collapse"
+					data-target="#navbar-main">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="navbar-collapse collapse" id="navbar-main">
+				<ul class="nav navbar-nav">
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#" id="menus">メニュー１<span
+							class="caret"></span></a>
+						<ul class="dropdown-menu" aria-labelledby="themes">
+							<li><a href="../BU_01_memberAndEventMng/SC_01_01_01_menberSearch.html">メンバーの検索</a></li>
+							<li><a href="../BU_01_memberAndEventMng/SC_01_01_02_menberRegister.html">メンバーの登録</a></li>
+							<li><a href="../BU_01_memberAndEventMng/SC_01_02_01_eventSearch.html">イベントの検索</a></li>
+							<li><a href="../BU_01_memberAndEventMng/SC_01_02_02_eventRegister.html">イベントの登録</a></li>
+						</ul>
+					</li>
+					<li><a href="#">Help</a></li>
+				</ul>
+
+				<ul class="nav navbar-nav navbar-right">
+					<p class="navbar-text">
+						ようこそ <a href="#" class="navbar-link">ゲスト</a> さん
+					</p>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<div class="container">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<a data-toggle="collapse" href="#searchCondition">
+					メンバー情報
+				</a>
+			</div>
+			
+			<div id="searchCondition" class="panel-body panel-collapse collapse in">
+				<div class="row">
+					<div class="col-md-2">
+						<div class="margin2Box">名前（漢字）</div>
+					</div>
+					<div class="col-md-4">
+						<div class="margin2Box">
+							<input class="form-control" id="firstNameKanji" placeholder="姓"　type="text">
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="margin2Box">
+							<input class="form-control" id="lastNameKanji" placeholder="名"　type="text">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-2">
+						<div class="margin2Box">名前（カナ）<span class="required">※</span></div>
+					</div>
+					<div class="col-md-4">
+						<div class="margin2Box">
+							<input class="form-control" id="firstNameKana" placeholder="セイ"　type="text">
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="margin2Box">
+							<input class="form-control" id="lastNameKana" placeholder="メイ"　type="text">
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-2">
+						<div class="margin2Box">旧姓</div>
+					</div>
+					<div class="col-md-4">
+						<div class="margin2Box">
+							<input class="form-control" id="kyuSei"  placeholder="旧姓" type="text">
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-2">
+						<div class="margin2Box">ニックネーム</div>
+					</div>
+					<div class="col-md-4">
+						<div class="margin2Box">
+							<input class="form-control" id="nickName"  placeholder="ニックネーム１" type="text">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-2">
+					</div>
+					<div class="col-md-4">
+						<div class="margin2Box">
+							<input class="form-control" id="nickName"  placeholder="ニックネーム２" type="text">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-2">
+					</div>
+					<div class="col-md-4">
+						<div class="margin2Box">
+							<input class="form-control" id="nickName" placeholder="ニックネーム３" type="text">
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-2">
+						<div class="margin2Box">生年月日</div>
+					</div>
+					<div class="col-md-2">
+						<div class="margin20Box">
+							<input class="form-control" id="seinenGappiFrom" type="text" >
+						</div>
+					</div>
+					<div class="col-md-1">
+						<div class="margin20Box">
+							<button type="button" class="btn btn-primary" aria-label="Left Align">
+							<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+							</button>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-2">
+						<div class="margin2Box">性別</div>
+					</div>
+					<div class="col-md-4">
+						<div class="margin20Box">
+							<div class="radio-inline">
+							<input id="seibetsu" type="radio" name="生年月日"><span>男性</span>
+							</div>
+							<div class="radio-inline">
+							<input id="seibetsu" type="radio" name="生年月日"><span>女性</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-2">
+						<div class="margin2Box">カテゴリ</div>
+					</div>
+					<div class="col-md-4">
+						<div class="margin2Box">
+							<select class="form-control" id="todouhuken" name="todouhuken">
+								<option value="yujinDaigaku" selected>友人（大学）</option>
+								<option value="yujinKoukou">友人（高校）</option>
+								<option value="yujinChugaku">友人（中学）</option>
+								<option value="yujinShogaku">友人（小学）</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-2">
+						<div class="margin2Box">電話番号</div>
+					</div>
+					<div class="col-md-4">
+						<div class="margin2Box">
+							<input class="form-control" id="tellNum" placeholder="例）03-1234-5678" type="text">
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div class="margin2Box">
+							<select class="form-control">
+								<option value="blank" selected></option>
+								<option value="kojinKeitai">個人携帯</option>
+								<option value="homeTell">家電話</option>
+								<option value="kaisyaKeitai">会社携帯</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-2">
+					</div>
+					<div class="col-md-4">
+						<div class="margin2Box">
+							<input class="form-control" id="tellNum" placeholder="例）03-1234-5678" type="text">
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div class="margin2Box">
+							<select class="form-control">
+								<option value="blank" selected></option>
+								<option value="kojinKeitai">個人携帯</option>
+								<option value="homeTell">家電話</option>
+								<option value="kaisyaKeitai">会社携帯</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-2">
+					</div>
+					<div class="col-md-4">
+						<div class="margin2Box">
+							<input class="form-control" id="tellNum" placeholder="例）03-1234-5678" type="text">
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div class="margin2Box">
+							<select class="form-control">
+								<option value="blank" selected></option>
+								<option value="kojinKeitai">個人携帯</option>
+								<option value="homeTell">家電話</option>
+								<option value="kaisyaKeitai">会社携帯</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-2">
+						<div class="margin2Box">FAX番号</div>
+					</div>
+					<div class="col-md-4">
+						<div class="margin2Box">
+							<input class="form-control" id="tellNum" placeholder="例）03-1234-5678" type="text">
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div class="margin2Box">
+							<select class="form-control">
+								<option value="blank" selected></option>
+								<option value="homeTell">家FAX</option>
+								<option value="kaisyaKeitai">会社FAX</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-2">
+						<div class="margin2Box">メールアドレス</div>
+					</div>
+					<div class="col-md-6">
+						<div class="margin2Box">
+							<input class="form-control" id="tellNum" placeholder="例）xxx@sample.co.jp" type="text">
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div class="margin2Box">
+							<select class="form-control">
+								<option value="blank" selected></option>
+								<option value="homeTell">個人メール</option>
+								<option value="kaisyaKeitai">会社メール</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-2">
+					</div>
+					<div class="col-md-6">
+						<div class="margin2Box">
+							<input class="form-control" id="tellNum" placeholder="例）xxx@sample.co.jp" type="text">
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div class="margin2Box">
+							<select class="form-control">
+								<option value="blank" selected></option>
+								<option value="homeTell">個人メール</option>
+								<option value="kaisyaKeitai">会社メール</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-2">
+					</div>
+					<div class="col-md-6">
+						<div class="margin2Box">
+							<input class="form-control" id="tellNum" placeholder="例）xxx@sample.co.jp" type="text">
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div class="margin2Box">
+							<select class="form-control">
+								<option value="blank" selected></option>
+								<option value="homeTell">個人メール</option>
+								<option value="kaisyaKeitai">会社メール</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-2">
+						<div class="margin2Box">郵便番号</div>
+					</div>
+					<div class="col-md-2">
+						<div class="margin2Box">
+							<input class="form-control" id="postalNum" placeholder="例）999-9999" type="text">
+						</div>
+					</div>
+					<div class="col-md-1">
+						<div class="margin2Box">
+							<button type="button" class="btn btn-primary" aria-label="Left Align">
+							<span class="glyphicon" aria-hidden="true">住所へ反映</span>
+							</button>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-2">
+						<div class="margin2Box">都道府県</div>
+					</div>
+					<div class="col-md-2">
+						<div class="margin2Box">
+							<select class="form-control" id="todouhuken" name="todouhuken">
+								<option value="blank" selected></option>
+								<option value="fukuoka">福岡</option>
+								<option value="oita">大分</option>
+								<option value="saga">佐賀</option>
+								<option value="kumamoto">熊本</option>
+								<option value="miyazaki">宮崎</option>
+								<option value="kagoshima">鹿児島</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-2">
+						<div class="margin2Box">市区町村</div>
+					</div>
+					<div class="col-md-8">
+						<div class="margin2Box">
+							<input class="form-control" id="sikuchoson" type="text">
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-2">
+						<div class="margin2Box">マンション名等</div>
+					</div>
+					<div class="col-md-8">
+						<div class="margin2Box">
+							<input class="form-control" id="manshonApartName" type="text">
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-2">
+						<div class="margin2Box">職業</div>
+					</div>
+					<div class="col-md-4">
+						<div class="margin2Box">
+							<select class="form-control" id="todouhuken" name="todouhuken">
+								<option value="blank" selected></option>
+								<option value="kaisyain">会社員</option>
+								<option value="jieigyou">自営業</option>
+								<option value="partAlbait">パート・アルバイト</option>
+								<option value="sengyoShufu">専業主婦</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-2">
+						<div class="margin2Box">メモ</div>
+					</div>
+					<div class="col-md-8">
+						<div class="margin2Box">
+							<textarea placeholder="" rows="10" class="form-control" id="memo"></textarea>
+						</div>					
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-2 col-md-offset-5">
+				<div class="margin30Box harmosSearchButton">
+					<button class="btn btn-primary harmos_w_120">登録</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- /carousel -->
+	<script src="../common/javaScript/jquery-2.1.4.min.js"></script>
+	<script src="../common/javaScript/bootstrap.min.js"></script>
+	<script src="../common/javaScript/slidebars.min.js"></script>
+	
+</body>
+</html>

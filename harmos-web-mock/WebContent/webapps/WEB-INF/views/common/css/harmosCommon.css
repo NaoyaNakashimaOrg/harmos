@@ -1,0 +1,174 @@
+@CHARSET "UTF-8";
+
+td, th {
+	padding: 5px 10px;
+}
+
+
+.navMargin {
+	margin-bottom: 50px;
+}
+
+/* ボタンに関するスタイル */
+.harmosSearchButton {
+	text-align: center;
+}
+
+/* 入力必須マークに関するスタイル */
+.required{
+	color: #ff4500;
+	font-size: 16px;
+}
+
+/* システム共通のwidth定義 */
+.harmos_w_150 {
+	width: 150px;
+}
+
+.harmos_w_140 {
+	width: 140px;
+}
+
+.harmos_w_130 {
+	width: 130px;
+}
+
+.harmos_w_120 {
+	width: 120px;
+}
+
+.harmos_w_110 {
+	width: 110px;
+}
+
+.harmos_w_100 {
+	width: 100px;
+}
+
+.harmos_w_90 {
+	width: 90px;
+}
+
+.harmos_w_80 {
+	width: 80px;
+}
+
+.harmos_w_70 {
+	width: 70px;
+}
+
+/* グリッドシステムに関するスタイル */
+.margin2Box {
+	padding: 5px;
+	margin-bottom: 2px;
+}
+
+.margin4Box {
+	padding: 5px;
+	margin-bottom: 4px;
+}
+
+.margin6Box {
+	padding: 5px;
+	margin-bottom: 6px;
+}
+
+.margin8Box {
+	padding: 5px;
+	margin-bottom: 8px;
+}
+
+.margin10Box {
+	padding: 5px;
+	margin-bottom: 10px;
+}
+
+.margin20Box {
+	padding: 5px;
+	margin-bottom: 20px;
+}
+
+.margin30Box {
+	padding: 5px;
+	margin-bottom: 30px;
+}
+
+.margin40Box {
+	padding: 5px;
+	margin-bottom: 40px;
+}
+
+.margin50Box {
+	padding: 5px;
+	margin-bottom: 50px;
+}
+
+.harmosPagiNation {
+	text-align: center;
+}
+
+.harmosbg1 {
+	background-color: #F78181;
+}
+
+.harmosbg2 {
+	background-color: #F7BE81;
+}
+
+.harmosbg3 {
+	background-color: #F3F781;
+}
+
+.harmosbg4 {
+	background-color: #BEF781;
+}
+
+.harmosbg5 {
+	background-color: #81F781;
+}
+
+.harmosbg6 {
+	background-color: #81F7D8;
+}
+
+.harmosbg7 {
+	background-color: #81DAF5;
+}
+
+.harmosbg8 {
+	background-color: #819FF7;
+}
+
+.harmosbg9 {
+	background-color: #9F81F7;
+}
+
+.harmosbg10 {
+	background-color: #DA81F5;
+}
+
+.harmosbg11 {
+	background-color: #F781D8;
+}
+
+.harmosbg12 {
+	background-color: #F7819F;
+}
+
+input[type="text"], textarea {
+	border: 1px solid #cccccc;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+/* アクティブなインプットの枠色を変える */
+input[type="text"]:focus, textarea:focus {
+	box-shadow: 0 0 7px #3498db;
+	border: 1px solid #3498db;
+}
+
+input[type="text"]::-ms-clear {
+	margin-right: 5px;
+	height: 24px;
+	color: #ccc;
+}
