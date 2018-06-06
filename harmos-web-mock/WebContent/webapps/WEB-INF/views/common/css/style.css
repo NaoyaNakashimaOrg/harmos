@@ -6,3 +6,10 @@
 [class*=js-] {
     cursor: pointer;
 }
+
+.navbar-brand {
+  background: url("../images/yLogo.png") no-repeat left center;
+  background-size: contain;
+  height: 50px;
+  width: 250px;
+}
