@@ -38,7 +38,7 @@
 
 				<ul class="nav navbar-nav navbar-right">
 					<p class="navbar-text">
-						ようこそ <a href="#" class="navbar-link">ゲスト</a> さん
+						ようこそ <a href="#" class="navbar-link">orchesvn</a> さん
 					</p>
 				</ul>
 			</div>
@@ -49,7 +49,7 @@
 		<div class="panel panel-primary">
 			<div class="panel-heading">
 				<a data-toggle="collapse" href="#searchCondition">
-					<span style="color:#ffffff;" >メンバー情報</span>
+					<span style="color:#ffffff;" >イベントの登録</span>
 				</a>
 			</div>
 			
@@ -63,98 +63,20 @@
 							<input class="form-control" id="firstNameKanji" placeholder="姓"　type="text">
 						</div>
 					</div>
-					<div class="col-md-4">
-						<div class="margin2Box">
-							<input class="form-control" id="lastNameKanji" placeholder="名"　type="text">
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-2">
-						<div class="margin2Box">名前（カナ）<span class="required">※</span></div>
-					</div>
-					<div class="col-md-4">
-						<div class="margin2Box">
-							<input class="form-control" id="firstNameKana" placeholder="セイ"　type="text">
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="margin2Box">
-							<input class="form-control" id="lastNameKana" placeholder="メイ"　type="text">
-						</div>
-					</div>
 				</div>
 				
 				<div class="row">
 					<div class="col-md-2">
-						<div class="margin2Box">旧姓</div>
+						<div class="margin2Box">イベント<span class="required">※</span></div>
 					</div>
-					<div class="col-md-4">
+					<div class="col-md-2">
 						<div class="margin2Box">
-							<input class="form-control" id="kyuSei"  placeholder="旧姓" type="text">
-						</div>
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-md-2">
-						<div class="margin2Box">ニックネーム</div>
-					</div>
-					<div class="col-md-4">
-						<div class="margin2Box">
-							<input class="form-control" id="nickName"  placeholder="ニックネーム１" type="text">
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-2">
-					</div>
-					<div class="col-md-4">
-						<div class="margin2Box">
-							<input class="form-control" id="nickName"  placeholder="ニックネーム２" type="text">
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-2">
-					</div>
-					<div class="col-md-4">
-						<div class="margin2Box">
-							<input class="form-control" id="nickName" placeholder="ニックネーム３" type="text">
-						</div>
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-md-2">
-						<div class="margin2Box">生年月日</div>
-					</div>
-					<div class="col-md-2">
-						<div class="margin20Box">
-							<input class="form-control" id="seinenGappiFrom" type="text" >
-						</div>
-					</div>
-					<div class="col-md-1">
-						<div class="margin20Box">
-							<button type="button" class="btn btn-primary" aria-label="Left Align">
-							<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-							</button>
-						</div>
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-md-2">
-						<div class="margin2Box">性別</div>
-					</div>
-					<div class="col-md-4">
-						<div class="margin20Box">
-							<div class="radio-inline">
-							<input id="seibetsu" type="radio" name="生年月日"><span>男性</span>
-							</div>
-							<div class="radio-inline">
-							<input id="seibetsu" type="radio" name="生年月日"><span>女性</span>
-							</div>
+							<select class="form-control" id="todouhuken" name="todouhuken">
+								<option value="fukuoka">出産祝い</option>
+								<option value="oita">お歳暮</option>
+								<option value="saga"　selected>お中元</option>
+								<option value="kumamoto">妊娠祝い</option>
+							</select>
 						</div>
 					</div>
 				</div>
@@ -163,185 +85,11 @@
 					<div class="col-md-2">
 						<div class="margin2Box">カテゴリ</div>
 					</div>
-					<div class="col-md-4">
-						<div class="margin2Box">
-							<select class="form-control" id="todouhuken" name="todouhuken">
-								<option value="yujinDaigaku" selected>友人（大学）</option>
-								<option value="yujinKoukou">友人（高校）</option>
-								<option value="yujinChugaku">友人（中学）</option>
-								<option value="yujinShogaku">友人（小学）</option>
-							</select>
-						</div>
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-md-2">
-						<div class="margin2Box">電話番号</div>
-					</div>
-					<div class="col-md-4">
-						<div class="margin2Box">
-							<input class="form-control" id="tellNum" placeholder="例）03-1234-5678" type="text">
-						</div>
-					</div>
-					<div class="col-md-2">
-						<div class="margin2Box">
-							<select class="form-control">
-								<option value="blank" selected></option>
-								<option value="kojinKeitai">個人携帯</option>
-								<option value="homeTell">家電話</option>
-								<option value="kaisyaKeitai">会社携帯</option>
-							</select>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-2">
-					</div>
-					<div class="col-md-4">
-						<div class="margin2Box">
-							<input class="form-control" id="tellNum" placeholder="例）03-1234-5678" type="text">
-						</div>
-					</div>
-					<div class="col-md-2">
-						<div class="margin2Box">
-							<select class="form-control">
-								<option value="blank" selected></option>
-								<option value="kojinKeitai">個人携帯</option>
-								<option value="homeTell">家電話</option>
-								<option value="kaisyaKeitai">会社携帯</option>
-							</select>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-2">
-					</div>
-					<div class="col-md-4">
-						<div class="margin2Box">
-							<input class="form-control" id="tellNum" placeholder="例）03-1234-5678" type="text">
-						</div>
-					</div>
-					<div class="col-md-2">
-						<div class="margin2Box">
-							<select class="form-control">
-								<option value="blank" selected></option>
-								<option value="kojinKeitai">個人携帯</option>
-								<option value="homeTell">家電話</option>
-								<option value="kaisyaKeitai">会社携帯</option>
-							</select>
-						</div>
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-md-2">
-						<div class="margin2Box">FAX番号</div>
-					</div>
-					<div class="col-md-4">
-						<div class="margin2Box">
-							<input class="form-control" id="tellNum" placeholder="例）03-1234-5678" type="text">
-						</div>
-					</div>
-					<div class="col-md-2">
-						<div class="margin2Box">
-							<select class="form-control">
-								<option value="blank" selected></option>
-								<option value="homeTell">家FAX</option>
-								<option value="kaisyaKeitai">会社FAX</option>
-							</select>
-						</div>
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-md-2">
-						<div class="margin2Box">メールアドレス</div>
-					</div>
-					<div class="col-md-6">
-						<div class="margin2Box">
-							<input class="form-control" id="tellNum" placeholder="例）xxx@sample.co.jp" type="text">
-						</div>
-					</div>
-					<div class="col-md-2">
-						<div class="margin2Box">
-							<select class="form-control">
-								<option value="blank" selected></option>
-								<option value="homeTell">個人メール</option>
-								<option value="kaisyaKeitai">会社メール</option>
-							</select>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-2">
-					</div>
-					<div class="col-md-6">
-						<div class="margin2Box">
-							<input class="form-control" id="tellNum" placeholder="例）xxx@sample.co.jp" type="text">
-						</div>
-					</div>
-					<div class="col-md-2">
-						<div class="margin2Box">
-							<select class="form-control">
-								<option value="blank" selected></option>
-								<option value="homeTell">個人メール</option>
-								<option value="kaisyaKeitai">会社メール</option>
-							</select>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-2">
-					</div>
-					<div class="col-md-6">
-						<div class="margin2Box">
-							<input class="form-control" id="tellNum" placeholder="例）xxx@sample.co.jp" type="text">
-						</div>
-					</div>
-					<div class="col-md-2">
-						<div class="margin2Box">
-							<select class="form-control">
-								<option value="blank" selected></option>
-								<option value="homeTell">個人メール</option>
-								<option value="kaisyaKeitai">会社メール</option>
-							</select>
-						</div>
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-md-2">
-						<div class="margin2Box">郵便番号</div>
-					</div>
-					<div class="col-md-2">
-						<div class="margin2Box">
-							<input class="form-control" id="postalNum" placeholder="例）999-9999" type="text">
-						</div>
-					</div>
-					<div class="col-md-1">
-						<div class="margin2Box">
-							<button type="button" class="btn btn-primary" aria-label="Left Align">
-							<span class="glyphicon" aria-hidden="true">住所へ反映</span>
-							</button>
-						</div>
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-md-2">
-						<div class="margin2Box">都道府県</div>
-					</div>
 					<div class="col-md-2">
 						<div class="margin2Box">
 							<select class="form-control" id="todouhuken" name="todouhuken">
-								<option value="blank" selected></option>
-								<option value="fukuoka">福岡</option>
-								<option value="oita">大分</option>
-								<option value="saga">佐賀</option>
-								<option value="kumamoto">熊本</option>
-								<option value="miyazaki">宮崎</option>
-								<option value="kagoshima">鹿児島</option>
+								<option value="miyazaki">友人</option>
+								<option value="kagoshima" selected>親族</option>
 							</select>
 						</div>
 					</div>
@@ -349,50 +97,21 @@
 				
 				<div class="row">
 					<div class="col-md-2">
-						<div class="margin2Box">市区町村</div>
-					</div>
-					<div class="col-md-8">
-						<div class="margin2Box">
-							<input class="form-control" id="sikuchoson" type="text">
-						</div>
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-md-2">
-						<div class="margin2Box">マンション名等</div>
-					</div>
-					<div class="col-md-8">
-						<div class="margin2Box">
-							<input class="form-control" id="manshonApartName" type="text">
-						</div>
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-md-2">
-						<div class="margin2Box">職業</div>
+						<div class="margin2Box">金額</div>
 					</div>
 					<div class="col-md-4">
 						<div class="margin2Box">
-							<select class="form-control" id="todouhuken" name="todouhuken">
-								<option value="blank" selected></option>
-								<option value="kaisyain">会社員</option>
-								<option value="jieigyou">自営業</option>
-								<option value="partAlbait">パート・アルバイト</option>
-								<option value="sengyoShufu">専業主婦</option>
-							</select>
+							<input class="form-control" id="tellNum" placeholder="例）03-1234-5678" type="text">
 						</div>
 					</div>
 				</div>
-				
 				<div class="row">
 					<div class="col-md-2">
 						<div class="margin2Box">メモ</div>
 					</div>
 					<div class="col-md-8">
 						<div class="margin2Box">
-							<textarea placeholder="" rows="10" class="form-control" id="memo"></textarea>
+							<textarea placeholder="" rows="3" class="form-control" id="memo"></textarea>
 						</div>					
 					</div>
 				</div>
