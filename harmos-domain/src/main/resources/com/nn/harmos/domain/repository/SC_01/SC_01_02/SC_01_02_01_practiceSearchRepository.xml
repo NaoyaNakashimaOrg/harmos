@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.nn.harmos.domain.repository.SC_01.SC_01_02.SC_01_02_01_practiceSearchRepository">
+	
+	<select id="search" resultType="com.nn.harmos.domain.model.SC_01.SC_01_02.SC_01_02_01_practiceSearch.form.SC_01_02_01_searchResult">
+		/* SC_01_01_01_practiceDetailInputRepository.numberingPracticeMngNo */
+		SELECT 'no' AS 'no'
+		       ,'practiceNo' AS 'practiceNo'
+		       ,'overview' AS 'overview'
+               ,TRUE AS 'module'
+               ,FALSE AS 'bibliography'
+               ,TRUE AS 'webSite'
+               ,FALSE AS 'document'
+        FROM DUAL
+	</select>
+	
+</mapper>

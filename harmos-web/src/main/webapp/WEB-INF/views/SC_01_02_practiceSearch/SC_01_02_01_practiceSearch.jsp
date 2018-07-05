@@ -22,16 +22,16 @@
 			<div id="searchCondition" class="panel-body panel-collapse collapse in">
 				<div class="row">
 					<div class="col-md-2">
-						<div class="margin2Box">サンプルNO</div>
+						<div class="margin2Box">サンプルNo</div>
 					</div>
 					<div class="col-md-2">
 						<div class="margin2Box">
-							<input class="form-control" id="firstNameKanji" placeholder="FROM" type="text">
+							<form:input id="practiceNoFrom" class="form-control" placeholder="FROM" path="searchCondition.practiceNoFrom"/>
 						</div>
 					</div>
 					<div class="col-md-2">
 						<div class="margin2Box">
-							<input class="form-control" id="lastNameKanji" placeholder="TO" type="text">
+							<form:input id="practiceNoTo" class="form-control" placeholder="FROM" path="searchCondition.practiceNoTo"/>
 						</div>
 					</div>
 				</div>
@@ -42,7 +42,7 @@
 					</div>
 					<div class="col-md-6">
 						<div class="margin2Box">
-							<input class="form-control" id="nickName" type="text">
+							<form:input id="overview" class="form-control" placeholder="" path="searchCondition.overview"/>
 						</div>
 					</div>
 					<div class="col-md-2">
@@ -58,26 +58,11 @@
 				
 				<div class="row">
 					<div class="col-md-2">
-						<div class="margin2Box">カテゴリ</div>
-					</div>
-					<div class="col-md-4">
-						<div class="margin2Box">
-							<select class="form-control" id="searchKbn" name="searchKbn">
-								<option value="bubunIcchi" selected>部分一致</option>
-								<option value="zenpoIcchi">前方一致</option>
-								<option value="kanzenIcchi">完全一致</option>
-							</select>
-						</div>
-					</div>
-				</div>
-								
-				<div class="row">
-					<div class="col-md-2">
 						<div class="margin2Box">詳細</div>
 					</div>
 					<div class="col-md-6">
 						<div class="margin2Box">
-							<input class="form-control" id="nickName" type="text">
+							<form:input id="detail" class="form-control" placeholder="" path="searchCondition.detail"/>
 						</div>
 					</div>
 					<div class="col-md-2">
@@ -98,51 +83,15 @@
 					<div class="col-md-2">
 						<div class="margin2Box">
 							<div class="checkbox">
-								<label><input type="checkbox" value="checkboxA"> 登録あり</label>
+								<label><form:checkbox name="module" path="searchCondition.existsModule" /> 登録あり</label>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-2">
 						<div class="margin2Box">
 							<div class="checkbox">
-								<label><input type="checkbox" value="checkboxA"> 登録なし</label>
+								<label><form:checkbox name="module" path="searchCondition.notExistsModule" /> 登録なし</label>
 							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-2">
-					</div>
-					<div class="col-md-6">
-						<div class="margin2Box">
-							<input class="form-control" id="nickName" placeholder="概要" type="text">
-						</div>
-					</div>
-					<div class="col-md-2">
-						<div class="margin2Box">
-							<select class="form-control" id="searchKbn" name="searchKbn">
-								<option value="bubunIcchi" selected>部分一致</option>
-								<option value="zenpoIcchi">前方一致</option>
-								<option value="kanzenIcchi">完全一致</option>
-							</select>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-2">
-					</div>
-					<div class="col-md-6">
-						<div class="margin2Box">
-							<input class="form-control" id="nickName" placeholder="モジュール名" type="text">
-						</div>
-					</div>
-					<div class="col-md-2">
-						<div class="margin2Box">
-							<select class="form-control" id="searchKbn" name="searchKbn">
-								<option value="bubunIcchi" selected>部分一致</option>
-								<option value="zenpoIcchi">前方一致</option>
-								<option value="kanzenIcchi">完全一致</option>
-							</select>
 						</div>
 					</div>
 				</div>
@@ -154,52 +103,15 @@
 					<div class="col-md-2">
 						<div class="margin2Box">
 							<div class="checkbox">
-								<label><input type="checkbox" value="checkboxA"> 登録あり</label>
+								<label><form:checkbox name="bibliography" path="searchCondition.existsBibliography" /> 登録あり</label>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-2">
 						<div class="margin2Box">
 							<div class="checkbox">
-								<label><input type="checkbox" value="checkboxA"> 登録なし</label>
+								<label><form:checkbox name="bibliography" path="searchCondition.notExistsBibliography" /> 登録なし</label>
 							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-2">
-						<div class="margin2Box"></div>
-					</div>
-					<div class="col-md-6">
-						<div class="margin2Box">
-							<input class="form-control" id="nickName" placeholder="文献名" type="text">
-						</div>
-					</div>
-					<div class="col-md-2">
-						<div class="margin2Box">
-							<select class="form-control" id="searchKbn" name="searchKbn">
-								<option value="bubunIcchi" selected>部分一致</option>
-								<option value="zenpoIcchi">前方一致</option>
-								<option value="kanzenIcchi">完全一致</option>
-							</select>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-2">
-					</div>
-					<div class="col-md-6">
-						<div class="margin2Box">
-							<input class="form-control" id="nickName" placeholder="出版社" type="text">
-						</div>
-					</div>
-					<div class="col-md-2">
-						<div class="margin2Box">
-							<select class="form-control" id="searchKbn" name="searchKbn">
-								<option value="bubunIcchi" selected>部分一致</option>
-								<option value="zenpoIcchi">前方一致</option>
-								<option value="kanzenIcchi">完全一致</option>
-							</select>
 						</div>
 					</div>
 				</div>
@@ -211,52 +123,15 @@
 					<div class="col-md-2">
 						<div class="margin2Box">
 							<div class="checkbox">
-								<label><input type="checkbox" value="checkboxA"> 登録あり</label>
+								<label><form:checkbox name="webSite" path="searchCondition.existsWebSite" /> 登録あり</label>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-2">
 						<div class="margin2Box">
 							<div class="checkbox">
-								<label><input type="checkbox" value="checkboxA"> 登録なし</label>
+								<label><form:checkbox name="webSite" path="searchCondition.notExistsWebSite" /> 登録なし</label>
 							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-2">
-						<div class="margin2Box"></div>
-					</div>
-					<div class="col-md-6">
-						<div class="margin2Box">
-							<input class="form-control" id="nickName" placeholder="概要" type="text">
-						</div>
-					</div>
-					<div class="col-md-2">
-						<div class="margin2Box">
-							<select class="form-control" id="searchKbn" name="searchKbn">
-								<option value="bubunIcchi" selected>部分一致</option>
-								<option value="zenpoIcchi">前方一致</option>
-								<option value="kanzenIcchi">完全一致</option>
-							</select>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-2">
-					</div>
-					<div class="col-md-6">
-						<div class="margin2Box">
-							<input class="form-control" id="nickName" placeholder="URL" type="text">
-						</div>
-					</div>
-					<div class="col-md-2">
-						<div class="margin2Box">
-							<select class="form-control" id="searchKbn" name="searchKbn">
-								<option value="bubunIcchi" selected>部分一致</option>
-								<option value="zenpoIcchi">前方一致</option>
-								<option value="kanzenIcchi">完全一致</option>
-							</select>
 						</div>
 					</div>
 				</div>
@@ -268,52 +143,15 @@
 					<div class="col-md-2">
 						<div class="margin2Box">
 							<div class="checkbox">
-								<label><input type="checkbox" value="checkboxA"> 登録あり</label>
+								<label><form:checkbox name="document" path="searchCondition.existsDocument" /> 登録あり</label>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-2">
 						<div class="margin2Box">
 							<div class="checkbox">
-								<label><input type="checkbox" value="checkboxA"> 登録なし</label>
+								<label><form:checkbox name="document" path="searchCondition.notExistsDocument" /> 登録なし</label>
 							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-2">
-						<div class="margin2Box"></div>
-					</div>
-					<div class="col-md-6">
-						<div class="margin2Box">
-							<input class="form-control" id="nickName" placeholder="概要" type="text">
-						</div>
-					</div>
-					<div class="col-md-2">
-						<div class="margin2Box">
-							<select class="form-control" id="searchKbn" name="searchKbn">
-								<option value="bubunIcchi" selected>部分一致</option>
-								<option value="zenpoIcchi">前方一致</option>
-								<option value="kanzenIcchi">完全一致</option>
-							</select>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-2">
-					</div>
-					<div class="col-md-6">
-						<div class="margin2Box">
-							<input class="form-control" id="nickName" placeholder="資料名" type="text">
-						</div>
-					</div>
-					<div class="col-md-2">
-						<div class="margin2Box">
-							<select class="form-control" id="searchKbn" name="searchKbn">
-								<option value="bubunIcchi" selected>部分一致</option>
-								<option value="zenpoIcchi">前方一致</option>
-								<option value="kanzenIcchi">完全一致</option>
-							</select>
 						</div>
 					</div>
 				</div>
@@ -324,7 +162,7 @@
 					</div>
 					<div class="col-md-6">
 						<div class="margin2Box">
-							<input class="form-control" id="address" type="text">
+							<form:input id="memo" class="form-control" placeholder="" path="searchCondition.memo"/>
 						</div>
 					</div>
 					<div class="col-md-2">
@@ -344,11 +182,16 @@
 		<div class="row">
 			<div class="col-md-2 col-md-offset-5">
 				<div class="margin30Box harmosSearchButton">
-					<button class="btn btn-primary harmos_w_120">検索</button>
+					<input type="submit" name="search" value="検索" class="btn btn-primary harmos_w_120"/>
 				</div>
 			</div>
 		</div>
-	
+		
+		<c:forEach var="article" items="searchResultList" varStatus="rowStatus">
+			 +++ ${article.practiceNo} +++ 
+		</c:forEach>
+		
+		
 		<div class="table-responsive">
 			<table class="table table-striped table-hover">
 				<thead>
@@ -361,7 +204,6 @@
 						<th>参考文献</th>
 						<th>参考サイト</th>
 						<th>参考資料</th>
-						<th>登録日</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -374,7 +216,6 @@
 						<td>〇</td>
 						<td>〇</td>
 						<td>〇</td>
-						<td>2018/04/26</td>
 					</tr>
 					<tr>
 						<td>1</td>
@@ -385,7 +226,6 @@
 						<td>〇</td>
 						<td>〇</td>
 						<td>〇</td>
-						<td>2018/04/26</td>
 					</tr>
 					<tr>
 						<td>1</td>
@@ -396,7 +236,6 @@
 						<td>〇</td>
 						<td>〇</td>
 						<td>〇</td>
-						<td>2018/04/26</td>
 					</tr>
 					<tr>
 						<td>1</td>
@@ -407,7 +246,6 @@
 						<td>〇</td>
 						<td>〇</td>
 						<td>〇</td>
-						<td>2018/04/26</td>
 					</tr>
 					<tr>
 						<td>1</td>
@@ -418,7 +256,6 @@
 						<td>〇</td>
 						<td>〇</td>
 						<td>〇</td>
-						<td>2018/04/26</td>
 					</tr>
 				</tbody>
 			</table>
