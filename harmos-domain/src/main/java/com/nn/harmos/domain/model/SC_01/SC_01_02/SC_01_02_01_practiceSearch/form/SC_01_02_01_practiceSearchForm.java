@@ -3,6 +3,8 @@ package com.nn.harmos.domain.model.SC_01.SC_01_02.SC_01_02_01_practiceSearch.for
 import java.io.Serializable;
 import java.util.List;
 
+import com.nn.harmos.domain.model.common.fw.dto.KbnCode;
+
 public class SC_01_02_01_practiceSearchForm implements Serializable {
 
 	/**
@@ -14,6 +16,11 @@ public class SC_01_02_01_practiceSearchForm implements Serializable {
 	 * 検索条件
 	 */
 	private SC_01_02_01_searchCondition searchCondition;
+
+	/**
+	 * 一致区分リスト
+	 */
+	private List<KbnCode> icchiKbnList;
 
 	/**
 	 * 検索結果リスト
@@ -37,11 +44,27 @@ public class SC_01_02_01_practiceSearchForm implements Serializable {
 	}
 
 	/**
+	 * 一致区分リストを取得する
+	 * @return 一致区分リスト
+	 */
+	public List<KbnCode> getIcchiKbnList() {
+	    return icchiKbnList;
+	}
+
+	/**
+	 * 一致区分リストを設定する
+	 * @param icchiKbnList 一致区分リスト
+	 */
+	public void setIcchiKbnList(List<KbnCode> icchiKbnList) {
+	    this.icchiKbnList = icchiKbnList;
+	}
+
+	/**
 	 * 検索結果リストを取得する
 	 * @return 検索結果リスト
 	 */
 	public List<SC_01_02_01_searchResult> getSearchResultList() {
-	    return searchResultList;
+		return searchResultList;
 	}
 
 	/**
@@ -49,7 +72,7 @@ public class SC_01_02_01_practiceSearchForm implements Serializable {
 	 * @param searchResultList 検索結果リスト
 	 */
 	public void setSearchResultList(List<SC_01_02_01_searchResult> searchResultList) {
-	    this.searchResultList = searchResultList;
+		this.searchResultList = searchResultList;
 	}
 
 }

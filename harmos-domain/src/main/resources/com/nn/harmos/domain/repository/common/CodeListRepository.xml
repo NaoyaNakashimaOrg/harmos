@@ -18,6 +18,7 @@
 		WHERE 
 			BUNRUI_CD = #{bunruiCd}
 		AND RONRI_SAKUJO_FLG = '0'
+		ORDER BY KUBUN_CD
 	</select>
 	
 </mapper>

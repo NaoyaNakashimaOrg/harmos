@@ -6,14 +6,78 @@
 	
 	<select id="search" resultType="com.nn.harmos.domain.model.SC_01.SC_01_02.SC_01_02_01_practiceSearch.form.SC_01_02_01_searchResult">
 		/* SC_01_01_01_practiceDetailInputRepository.numberingPracticeMngNo */
-		SELECT 'no' AS 'no'
-		       ,'practiceNo' AS 'practiceNo'
-		       ,'overview' AS 'overview'
-               ,TRUE AS 'module'
-               ,FALSE AS 'bibliography'
-               ,TRUE AS 'webSite'
-               ,FALSE AS 'document'
-        FROM DUAL
+		SELECT ROWNUM AS NO
+		       ,PRACTICE_MNG_NO
+		       ,OVERVIEW
+               ,REGIST_MODULE
+               ,REGIST_BIBLIOGRAPHY
+               ,REGIST_WEBSITE
+               ,REGIST_DOCUMENT
+               ,MEMO
+        FROM   TH0101_PRACTICE_MNG
+        WHERE  RONRI_SAKUJO_FLG = '0'
+               <!-- サンプルNo From -->
+               <if test="searchCondition.practiceNoFrom != null and searchCondition.practiceNoFrom != ''">
+               AND PRACTICE_MNG_NO <![CDATA[ >= ]]> #{searchCondition.practiceNoFrom}
+               </if>
+               <!-- サンプルNo To -->
+               <if test="searchCondition.practiceNoTo != null and searchCondition.practiceNoTo != ''">
+               AND PRACTICE_MNG_NO <![CDATA[ <= ]]> #{searchCondition.practiceNoTo}
+               </if>
+               <!-- 概要  -->
+               <if test="searchCondition.overview != null and searchCondition.overview != ''">
+               AND OVERVIEW
+                  <if test="searchCondition.icchiKbnGaiyo == '11'">
+                      LIKE '%' || #{searchCondition.overview} || '%'
+                  </if>
+                  <if test="searchCondition.icchiKbnGaiyo == '12'">
+                      LIKE #{searchCondition.overview} || '%'
+                  </if>
+                  <if test="searchCondition.icchiKbnGaiyo == '13'">
+                      = #{searchCondition.overview}
+                  </if>
+               </if>
+               <!-- モジュール登録 -->
+               <if test="searchCondition.registModule == true and searchCondition.notRegistModule == false">
+               AND REGIST_MODULE = '1'
+               </if>
+               <if test="searchCondition.registModule == false and searchCondition.notRegistModule == true">
+               AND REGIST_MODULE = '0'
+               </if>
+               <!-- 参考文献登録 -->
+               <if test="searchCondition.registBibliography == true and searchCondition.notRegistBibliography == false">
+               AND REGIST_BIBLIOGRAPHY = '1'
+               </if>
+               <if test="searchCondition.registBibliography == false and searchCondition.notRegistBibliography == true">
+               AND REGIST_BIBLIOGRAPHY = '0'
+               </if>
+               <!-- WEBサイト登録 -->
+               <if test="searchCondition.registWebSite == true and searchCondition.notRegistWebSite == false">
+               AND REGIST_WEBSITE = '1'
+               </if>
+               <if test="searchCondition.registWebSite == false and searchCondition.notRegistWebSite == true">
+               AND REGIST_WEBSITE = '0'
+               </if>
+               <!-- 参考資料登録 -->
+               <if test="searchCondition.registDocument == true and searchCondition.notRegistDocument == false">
+               AND REGIST_DOCUMENT = '1'
+               </if>
+               <if test="searchCondition.registDocument == false and searchCondition.notRegistDocument == true">
+               AND REGIST_DOCUMENT = '0'
+               </if>
+               <!-- メモ  -->
+               <if test="searchCondition.memo != null and searchCondition.memo != ''">
+               AND MEMO
+                  <if test="searchCondition.icchiKbnMemo == '11'">
+                      LIKE '%' || #{searchCondition.memo} || '%'
+                  </if>
+                  <if test="searchCondition.icchiKbnMemo == '12'">
+                      LIKE #{searchCondition.memo} || '%'
+                  </if>
+                  <if test="searchCondition.icchiKbnMemo == '13'">
+                      = #{searchCondition.memo}
+                  </if>
+               </if>
 	</select>
 	
 </mapper>

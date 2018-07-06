@@ -7,7 +7,7 @@ public class SearchCondition implements Serializable {
 	/**
 	 * serialVersionUID
 	 */
-	private static final long serialVersionUID = -4893719524831489761L;
+	private static final long serialVersionUID = 7949876669695027772L;
 
 	private int from;
 

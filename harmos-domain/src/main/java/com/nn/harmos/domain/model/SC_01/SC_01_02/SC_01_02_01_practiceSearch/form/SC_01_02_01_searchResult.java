@@ -17,7 +17,7 @@ public class SC_01_02_01_searchResult implements Serializable {
 	/**
 	 * サンプルNo
 	 */
-	private String practiceNo;
+	private String practiceMngNo;
 
 	/**
 	 * 概要
@@ -27,29 +27,34 @@ public class SC_01_02_01_searchResult implements Serializable {
 	/**
 	 * モジュール
 	 */
-	private boolean module;
+	private boolean registModule;
 
 	/**
 	 * 参考文献
 	 */
-	private boolean bibliography;
+	private boolean registBibliography;
 
 	/**
 	 * 参考サイト
 	 */
-	private boolean webSite;
+	private boolean registWebSite;
 
 	/**
 	 * 参考資料
 	 */
-	private boolean document;
+	private boolean registDocument;
+
+	/**
+	 * メモ
+	 */
+	private String memo;
 
 	/**
 	 * Noを取得する
 	 * @return No
 	 */
 	public String getNo() {
-	    return no;
+		return no;
 	}
 
 	/**
@@ -57,23 +62,23 @@ public class SC_01_02_01_searchResult implements Serializable {
 	 * @param no No
 	 */
 	public void setNo(String no) {
-	    this.no = no;
+		this.no = no;
 	}
 
 	/**
 	 * サンプルNoを取得する
 	 * @return サンプルNo
 	 */
-	public String getPracticeNo() {
-		return practiceNo;
+	public String getPracticeMngNo() {
+		return practiceMngNo;
 	}
 
 	/**
 	 * サンプルNoを設定する
-	 * @param practiceNo サンプルNo
+	 * @param practiceMngNo サンプルNo
 	 */
-	public void setPracticeNo(String practiceNo) {
-		this.practiceNo = practiceNo;
+	public void setPracticeMngNo(String practiceMngNo) {
+		this.practiceMngNo = practiceMngNo;
 	}
 
 	/**
@@ -96,64 +101,80 @@ public class SC_01_02_01_searchResult implements Serializable {
 	 * モジュールを取得する
 	 * @return モジュール
 	 */
-	public boolean isModule() {
-		return module;
+	public boolean isRegistModule() {
+		return registModule;
 	}
 
 	/**
 	 * モジュールを設定する
-	 * @param module モジュール
+	 * @param registModule モジュール
 	 */
-	public void setModule(boolean module) {
-		this.module = module;
+	public void setRegistModule(boolean registModule) {
+		this.registModule = registModule;
 	}
 
 	/**
 	 * 参考文献を取得する
 	 * @return 参考文献
 	 */
-	public boolean isBibliography() {
-		return bibliography;
+	public boolean isRegistBibliography() {
+		return registBibliography;
 	}
 
 	/**
 	 * 参考文献を設定する
-	 * @param bibliography 参考文献
+	 * @param registBibliography 参考文献
 	 */
-	public void setBibliography(boolean bibliography) {
-		this.bibliography = bibliography;
+	public void setRegistBibliography(boolean registBibliography) {
+		this.registBibliography = registBibliography;
 	}
 
 	/**
 	 * 参考サイトを取得する
 	 * @return 参考サイト
 	 */
-	public boolean isWebSite() {
-		return webSite;
+	public boolean isRegistWebSite() {
+		return registWebSite;
 	}
 
 	/**
 	 * 参考サイトを設定する
-	 * @param webSite 参考サイト
+	 * @param registWebSite 参考サイト
 	 */
-	public void setWebSite(boolean webSite) {
-		this.webSite = webSite;
+	public void setRegistWebSite(boolean registWebSite) {
+		this.registWebSite = registWebSite;
 	}
 
 	/**
 	 * 参考資料を取得する
 	 * @return 参考資料
 	 */
-	public boolean isDocument() {
-		return document;
+	public boolean isRegistDocument() {
+		return registDocument;
 	}
 
 	/**
 	 * 参考資料を設定する
-	 * @param document 参考資料
+	 * @param registDocument 参考資料
 	 */
-	public void setDocument(boolean document) {
-		this.document = document;
+	public void setRegistDocument(boolean registDocument) {
+		this.registDocument = registDocument;
+	}
+
+	/**
+	 * メモを取得する
+	 * @return メモ
+	 */
+	public String getMemo() {
+	    return memo;
+	}
+
+	/**
+	 * メモを設定する
+	 * @param memo メモ
+	 */
+	public void setMemo(String memo) {
+	    this.memo = memo;
 	}
 
 }

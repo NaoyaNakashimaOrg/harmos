@@ -6,7 +6,7 @@ import com.nn.harmos.domain.model.SC_01.SC_01_02.SC_01_02_01_practiceSearch.form
 import com.nn.harmos.domain.model.common.UserAccount;
 import com.nn.harmos.domain.model.common.fw.io.ServiceInput;
 
-public class SC_01_02_01_001_searchServiceInput extends ServiceInput implements Serializable {
+public class SC_01_02_01_002_searchServiceInput extends ServiceInput implements Serializable {
 
 	/**
 	 * serialVersionUID

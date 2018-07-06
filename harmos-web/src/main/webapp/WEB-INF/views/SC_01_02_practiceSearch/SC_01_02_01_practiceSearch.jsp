@@ -47,31 +47,9 @@
 					</div>
 					<div class="col-md-2">
 						<div class="margin2Box">
-							<select class="form-control" id="searchKbn" name="searchKbn">
-								<option value="bubunIcchi" selected>部分一致</option>
-								<option value="zenpoIcchi">前方一致</option>
-								<option value="kanzenIcchi">完全一致</option>
-							</select>
-						</div>
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-md-2">
-						<div class="margin2Box">詳細</div>
-					</div>
-					<div class="col-md-6">
-						<div class="margin2Box">
-							<form:input id="detail" class="form-control" placeholder="" path="searchCondition.detail"/>
-						</div>
-					</div>
-					<div class="col-md-2">
-						<div class="margin2Box">
-							<select class="form-control" id="searchKbn" name="searchKbn">
-								<option value="bubunIcchi" selected>部分一致</option>
-								<option value="zenpoIcchi">前方一致</option>
-								<option value="kanzenIcchi">完全一致</option>
-							</select>
+							<form:select cssClass="form-control" path="searchCondition.icchiKbnGaiyo">
+							  <form:options items="${SC_01_02_01_practiceSearchForm.icchiKbnList}" itemLabel="kubunName" itemValue="kubunCd" />
+							</form:select>
 						</div>
 					</div>
 				</div>
@@ -83,14 +61,14 @@
 					<div class="col-md-2">
 						<div class="margin2Box">
 							<div class="checkbox">
-								<label><form:checkbox name="module" path="searchCondition.existsModule" /> 登録あり</label>
+								<label><form:checkbox name="module" path="searchCondition.registModule" /> 登録あり</label>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-2">
 						<div class="margin2Box">
 							<div class="checkbox">
-								<label><form:checkbox name="module" path="searchCondition.notExistsModule" /> 登録なし</label>
+								<label><form:checkbox name="module" path="searchCondition.notRegistModule" /> 登録なし</label>
 							</div>
 						</div>
 					</div>
@@ -103,14 +81,14 @@
 					<div class="col-md-2">
 						<div class="margin2Box">
 							<div class="checkbox">
-								<label><form:checkbox name="bibliography" path="searchCondition.existsBibliography" /> 登録あり</label>
+								<label><form:checkbox name="bibliography" path="searchCondition.registBibliography" /> 登録あり</label>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-2">
 						<div class="margin2Box">
 							<div class="checkbox">
-								<label><form:checkbox name="bibliography" path="searchCondition.notExistsBibliography" /> 登録なし</label>
+								<label><form:checkbox name="bibliography" path="searchCondition.notRegistBibliography" /> 登録なし</label>
 							</div>
 						</div>
 					</div>
@@ -123,14 +101,14 @@
 					<div class="col-md-2">
 						<div class="margin2Box">
 							<div class="checkbox">
-								<label><form:checkbox name="webSite" path="searchCondition.existsWebSite" /> 登録あり</label>
+								<label><form:checkbox name="webSite" path="searchCondition.registWebSite" /> 登録あり</label>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-2">
 						<div class="margin2Box">
 							<div class="checkbox">
-								<label><form:checkbox name="webSite" path="searchCondition.notExistsWebSite" /> 登録なし</label>
+								<label><form:checkbox name="webSite" path="searchCondition.notRegistWebSite" /> 登録なし</label>
 							</div>
 						</div>
 					</div>
@@ -143,14 +121,14 @@
 					<div class="col-md-2">
 						<div class="margin2Box">
 							<div class="checkbox">
-								<label><form:checkbox name="document" path="searchCondition.existsDocument" /> 登録あり</label>
+								<label><form:checkbox name="document" path="searchCondition.registDocument" /> 登録あり</label>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-2">
 						<div class="margin2Box">
 							<div class="checkbox">
-								<label><form:checkbox name="document" path="searchCondition.notExistsDocument" /> 登録なし</label>
+								<label><form:checkbox name="document" path="searchCondition.notRegistDocument" /> 登録なし</label>
 							</div>
 						</div>
 					</div>
@@ -167,11 +145,9 @@
 					</div>
 					<div class="col-md-2">
 						<div class="margin2Box">
-							<select class="form-control" id="searchKbn" name="searchKbn">
-								<option value="bubunIcchi" selected>部分一致</option>
-								<option value="zenpoIcchi">前方一致</option>
-								<option value="kanzenIcchi">完全一致</option>
-							</select>
+							<form:select cssClass="form-control" path="searchCondition.icchiKbnMemo">
+							  <form:options items="${SC_01_02_01_practiceSearchForm.icchiKbnList}" itemLabel="kubunName" itemValue="kubunCd" />
+							</form:select>
 						</div>
 					</div>
 				</div>
@@ -187,9 +163,7 @@
 			</div>
 		</div>
 		
-		<c:forEach var="article" items="searchResultList" varStatus="rowStatus">
-			 +++ ${article.practiceNo} +++ 
-		</c:forEach>
+		
 		
 		
 		<div class="table-responsive">
@@ -199,64 +173,26 @@
 						<th>No.</th>
 						<th>サンプルNO</th>
 						<th>概要</th>
-						<th>カテゴリ</th>
 						<th>モジュール</th>
 						<th>参考文献</th>
 						<th>参考サイト</th>
 						<th>参考資料</th>
+						<th>メモ</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>1</td>
-						<td>PR18042600145</td>
-						<td>Tera ver5.x ファイルアップロード</td>
-						<td>業務</td>
-						<td>〇</td>
-						<td>〇</td>
-						<td>〇</td>
-						<td>〇</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>PR18042600145</td>
-						<td>Tera ver5.x ファイルアップロード</td>
-						<td>業務</td>
-						<td>〇</td>
-						<td>〇</td>
-						<td>〇</td>
-						<td>〇</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>PR18042600145</td>
-						<td>Tera ver5.x ファイルアップロード</td>
-						<td>業務</td>
-						<td>〇</td>
-						<td>〇</td>
-						<td>〇</td>
-						<td>〇</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>PR18042600145</td>
-						<td>Tera ver5.x ファイルアップロード</td>
-						<td>業務</td>
-						<td>〇</td>
-						<td>〇</td>
-						<td>〇</td>
-						<td>〇</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>PR18042600145</td>
-						<td>Tera ver5.x ファイルアップロード</td>
-						<td>業務</td>
-						<td>〇</td>
-						<td>〇</td>
-						<td>〇</td>
-						<td>〇</td>
-					</tr>
+					<c:forEach var="article" items="${SC_01_02_01_practiceSearchForm.searchResultList}" varStatus="rowStatus">
+						<tr>
+							<td>${f:h(article.no)}</td>
+							<td>${f:h(article.practiceMngNo)}</td>
+							<td>${f:h(article.overview)}</td>
+							<td>${f:h(article.registModule)}</td>
+							<td>${f:h(article.registBibliography)}</td>
+							<td>${f:h(article.registWebSite)}</td>
+							<td>${f:h(article.registDocument)}</td>
+							<td>${f:h(article.memo)}</td>
+						</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 		</div>
