@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.terasoluna.gfw.web.token.transaction.TransactionTokenCheck;
+import org.terasoluna.gfw.web.token.transaction.TransactionTokenType;
 
 import com.nn.harmos.domain.model.SC_01.SC_01_01.SC_01_01_01_practiceDetailInput.form.SC_01_01_01_practiceDetailInputForm;
 import com.nn.harmos.domain.model.SC_01.SC_01_01.SC_01_01_01_practiceDetailInput.service.SC_01_01_01_001_InitFormServiceInput;
@@ -44,16 +46,18 @@ public class SC_01_01_01_practiceDetailInput_Controller {
 	SC_01_01_01_002_registerService registerService;
 
 	/**
-	 * <B>SC_01_01_01_サンプル登録を表示する</B>
+	 * <B>SC_01_01_01_サンプル登録を表示する.</B>
 	 * <P>
-	 * 以下のURLにアクセスすることで本メソッドが呼び出される<BR>
-	 * ${pageContext.request.contextPath}/SC_01_01_01/practiceDetail?registerForm<BR>
-	 * registerForm というHTTPパラメータの指定があるため、<BR>
-	 * ControllerのregisterFormメソッドが呼び出されフォーム画面が表示される。<BR>
+	 * 以下のURLにアクセスすることで本メソッドが呼び出される.<BR>
+	 * ${pageContext.request.contextPath}/SC_01_01_01/practiceDetailInput?registerForm<BR>
 	 * 
+	 * @param form
+	 * @param userDetails
+	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value = "practiceDetailInput", params = "registerForm")
+	@TransactionTokenCheck(type = TransactionTokenType.BEGIN)
+	@RequestMapping(method = RequestMethod.GET, value = "practiceDetailInput", params = "registerForm")
 	public String registerForm(SC_01_01_01_practiceDetailInputForm form,
 			@AuthenticationPrincipal HarmosUserDetails userDetails, Model model) {
 
@@ -75,21 +79,31 @@ public class SC_01_01_01_practiceDetailInput_Controller {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		// ---------------------------------------------------------------------
+		// モデルへフォームを追加
+		// ---------------------------------------------------------------------
 		model.addAttribute(output.getForm());
 
 		return "SC_01_01_practiceDetail/SC_01_01_01_practiceDetailInput";
 	}
 
 	/**
-	 * <B>サンプル登録を実行し、サンプル詳細画面の表示メソッドへリダイレクトする</B>
+	 * <B>サンプル登録を実行し、サンプル詳細画面の表示メソッドへリダイレクトする.</B>
 	 * <P>
+	 * 以下のURLにアクセスすることで本メソッドが呼び出される.<BR>
+	 * ${pageContext.request.contextPath}/SC_01_01_01/practiceDetailInput?commit<BR>
 	 * 
 	 * @param form
 	 * @param result
+	 * @param userDetails
 	 * @param model
+	 * @param sessionStatus
+	 * @param attributes
 	 * @return
 	 */
-	@RequestMapping(value = "practiceDetailInput", method = RequestMethod.POST, params = "commit")
+	@TransactionTokenCheck(type = TransactionTokenType.IN)
+	@RequestMapping(method = RequestMethod.POST, value = "practiceDetailInput", params = "commit")
 	public String commit(@Validated SC_01_01_01_practiceDetailInputForm form, BindingResult result,
 			@AuthenticationPrincipal HarmosUserDetails userDetails, Model model, SessionStatus sessionStatus,
 			RedirectAttributes attributes) {
@@ -129,19 +143,26 @@ public class SC_01_01_01_practiceDetailInput_Controller {
 	}
 
 	/**
-	 * <B>SC_01_01_02_サンプル登録の表示メソッドを呼び出す</B>
+	 * <B>SC_01_01_02_サンプル登録の表示メソッドを呼び出す.</B>
 	 * <P>
 	 * 
 	 * @param form
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping(value = "practiceDetail", method = RequestMethod.POST, params = "redo")
+	@TransactionTokenCheck(type = TransactionTokenType.IN)
+	@RequestMapping(method = RequestMethod.POST, value = "practiceDetail", params = "redo")
 	public String redo(SC_01_01_01_practiceDetailInputForm form, Model model) {
 
 		return "SC_01_01_practiceDetail/SC_01_01_01_practiceDetailInput";
 	}
 
+	/**
+	 * 
+	 * <B>フォームのセットアップを行う.</B>
+	 * 
+	 * @return
+	 */
 	@ModelAttribute(value = "SC_01_01_01_practiceDetailInputForm")
 	public SC_01_01_01_practiceDetailInputForm setUpForm() {
 		return new SC_01_01_01_practiceDetailInputForm();

@@ -31,7 +31,19 @@ public class SC_01_02_01_practiceSearch_Controller {
 	@Inject
 	SC_01_02_01_001_searchService searchServive;
 
-	@RequestMapping(value = "practiceSearch", params = "searchForm")
+	/**
+	 * 
+	 * <B>SC_01_02_01_サンプル検索を表示する.</B>
+	 * <P>
+	 * 以下のURLにアクセスすることで本メソッドが呼び出される.<BR>
+	 * ${pageContext.request.contextPath}/SC_01_02_01/practiceSearch?searchForm<BR>
+	 * 
+	 * @param form 
+	 * @param userDetails 
+	 * @param model 
+	 * @return
+	 */
+	@RequestMapping(method = RequestMethod.GET, value = "practiceSearch", params = "searchForm")
 	public String searchForm(SC_01_02_01_practiceSearchForm form,
 			@AuthenticationPrincipal HarmosUserDetails userDetails, Model model) {
 
@@ -43,7 +55,22 @@ public class SC_01_02_01_practiceSearch_Controller {
 		return "SC_01_02_practiceSearch/SC_01_02_01_practiceSearch";
 	}
 
-	@RequestMapping(value = "practiceSearch", method = RequestMethod.POST, params = "search")
+	/**
+	 * 
+	 * <B>SC_01_02_01_サンプル検索を表示する.</B>
+	 * <P>
+	 * 以下のURLにアクセスすることで本メソッドが呼び出される.<BR>
+	 * ${pageContext.request.contextPath}/SC_01_02_01/practiceSearch?search<BR>
+	 * 
+	 * @param form 
+	 * @param result 
+	 * @param userDetails 
+	 * @param model 
+	 * @param sessionStatus 
+	 * @param attributes 
+	 * @return
+	 */
+	@RequestMapping(method = RequestMethod.POST, value = "practiceSearch", params = "search")
 	public String search(@Validated SC_01_02_01_practiceSearchForm form, BindingResult result,
 			@AuthenticationPrincipal HarmosUserDetails userDetails, Model model, SessionStatus sessionStatus,
 			RedirectAttributes attributes) {
@@ -72,6 +99,14 @@ public class SC_01_02_01_practiceSearch_Controller {
 		return "SC_01_02_practiceSearch/SC_01_02_01_practiceSearch";
 	}
 
+	/**
+	 * <B>SC_01_02_01_サンプル検索の表示メソッドを呼び出す.</B>
+	 * <P>
+	 * 
+	 * @param form 
+	 * @param model 
+	 * @return
+	 */
 	@RequestMapping(value = "practiceSearch", method = RequestMethod.POST, params = "redo")
 	public String redo(SC_01_02_01_practiceSearchForm form, Model model) {
 
