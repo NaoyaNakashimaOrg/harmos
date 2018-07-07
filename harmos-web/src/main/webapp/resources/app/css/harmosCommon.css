@@ -23,6 +23,17 @@ td, th {
 	margin-top: 20px;
 }
 
+/* テーブルに関するスタイル */
+table {
+  table-layout: fixed;
+}
+
+td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 /* ボタンに関するスタイル */
 .harmosExecuteButton {
 	text-align: center;

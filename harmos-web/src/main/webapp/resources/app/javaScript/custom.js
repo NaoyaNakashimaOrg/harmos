@@ -1,3 +1,7 @@
+$(function () {
+	$('[data-toggle="tooltip"]').tooltip();
+});
+
 (function() {
 	$(window).scroll(function() {
 		var top = $(document).scrollTop();
