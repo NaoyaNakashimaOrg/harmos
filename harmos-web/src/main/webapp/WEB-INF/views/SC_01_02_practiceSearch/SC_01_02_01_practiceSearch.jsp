@@ -163,11 +163,19 @@
 			</div>
 		</div>
 		
-		
-		
-		
+		<c:if test="${SC_01_02_01_practiceSearchForm != null and fn:length(SC_01_02_01_practiceSearchForm.searchResultList) != 0}">
 		<div class="table-responsive">
 			<table class="table table-striped table-hover">
+				<colgroup>
+					<col span="1" width="50">
+					<col span="1" width="130">
+					<col span="1" width="300">
+					<col span="1" width="90">
+					<col span="1" width="90">
+					<col span="1" width="90">
+					<col span="1" width="90">
+					<col span="1" width="auto">
+				</colgroup>
 				<thead>
 					<tr>
 						<th>No.</th>
@@ -184,13 +192,13 @@
 					<c:forEach var="article" items="${SC_01_02_01_practiceSearchForm.searchResultList}" varStatus="rowStatus">
 						<tr>
 							<td>${f:h(article.no)}</td>
-							<td>${f:h(article.practiceMngNo)}</td>
-							<td>${f:h(article.overview)}</td>
+							<td><a href="${f:h(article.practiceMngNo)}" target="_blank">${f:h(article.practiceMngNo)}</a></td>
+							<td><span data-toggle="tooltip" title="${f:h(article.overview)}" data-placement="bottom">${f:h(article.overview)}</span></td>
 							<td>${f:h(article.registModule)}</td>
 							<td>${f:h(article.registBibliography)}</td>
 							<td>${f:h(article.registWebSite)}</td>
 							<td>${f:h(article.registDocument)}</td>
-							<td>${f:h(article.memo)}</td>
+							<td><span data-toggle="tooltip" title="${f:h(article.memo)}" data-placement="bottom">${f:h(article.memo)}</span></td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -219,6 +227,7 @@
 				</nav>
 			</div>
 		</div>
+		</c:if>
 		
 </form:form>
 </body>

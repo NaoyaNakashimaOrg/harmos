@@ -9,10 +9,10 @@
 		SELECT ROWNUM AS NO
 		       ,PRACTICE_MNG_NO
 		       ,OVERVIEW
-               ,REGIST_MODULE
-               ,REGIST_BIBLIOGRAPHY
-               ,REGIST_WEBSITE
-               ,REGIST_DOCUMENT
+               ,DECODE(REGIST_MODULE, '1', '◯', '') AS registModule
+               ,DECODE(REGIST_BIBLIOGRAPHY, '1', '◯', '') AS registBibliography
+               ,DECODE(REGIST_WEBSITE, '1', '◯', '') AS registWebSite
+               ,DECODE(REGIST_DOCUMENT, '1', '◯', '') AS registDocument
                ,MEMO
         FROM   TH0101_PRACTICE_MNG
         WHERE  RONRI_SAKUJO_FLG = '0'

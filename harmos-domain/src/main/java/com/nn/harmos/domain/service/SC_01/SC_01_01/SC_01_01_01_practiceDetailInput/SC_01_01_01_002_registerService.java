@@ -41,8 +41,14 @@ public class SC_01_01_01_002_registerService
 		final String practiceMngNo = practiceDetailInputRepository.numberingPracticeMngNo();
 		form.setPracticeMngNo(practiceMngNo);
 
-		// TH0101_サンプル管理を登録する
-		practiceDetailInputRepository.insertPracticeMng(form, account);
+		// モジュール登録フラグ
+		boolean registModule = false;
+		// 参考文献登録フラグ
+		boolean registBibliography = false;
+		// 参考サイト登録フラグ
+		boolean registWebsite = false;
+		// 参考資料登録フラグ
+		boolean registDocument = false;
 
 		// TH0102_サンプルモジュールを登録する
 		List<SC_01_01_01_moduleForm> moduleList = form.getModuleList();
@@ -51,6 +57,7 @@ public class SC_01_01_01_002_registerService
 			MultipartFile module = moduleForm.getModule();
 			practiceDetailInputRepository.insertPracticeModule(form.getPracticeMngNo(), mi, moduleForm.getOverview(),
 					module.getOriginalFilename(), module.getInputStream(), account);
+			registModule = true;
 		}
 
 		// TH0103_参考文献を登録する
@@ -58,6 +65,7 @@ public class SC_01_01_01_002_registerService
 		for (int bi = 0; bi < bibliographyList.size(); bi++) {
 			practiceDetailInputRepository.insertPracticeBibliography(form.getPracticeMngNo(), bi,
 					bibliographyList.get(bi), account);
+			registBibliography = true;
 		}
 
 		// TH0104_参考サイトを登録する
@@ -65,6 +73,7 @@ public class SC_01_01_01_002_registerService
 		for (int wi = 0; wi < webSiteList.size(); wi++) {
 			practiceDetailInputRepository.insertPracticeWebsite(form.getPracticeMngNo(), wi, webSiteList.get(wi),
 					account);
+			registWebsite = true;
 		}
 
 		// TH0105_参考資料を登録する
@@ -74,7 +83,12 @@ public class SC_01_01_01_002_registerService
 			MultipartFile document = documentForm.getDocument();
 			practiceDetailInputRepository.insertPracticeDocment(form.getPracticeMngNo(), di, documentForm.getOverview(),
 					document.getOriginalFilename(), document.getInputStream(), account);
+			registDocument = true;
 		}
+
+		// TH0101_サンプル管理を登録する
+		practiceDetailInputRepository.insertPracticeMng(form, registModule, registBibliography, registWebsite,
+				registDocument, account);
 
 		// 出力値設定
 		SC_01_01_01_002_RegisterServiceOutput output = new SC_01_01_01_002_RegisterServiceOutput();

@@ -28,10 +28,15 @@ public interface SC_01_01_01_practiceDetailInputRepository {
 	 * TH0101_サンプル管理を登録する
 	 * 
 	 * @param form
+	 * @param registModule
+	 * @param registBibliography
+	 * @param registWebsite
+	 * @param registDocument
 	 * @param account
-	 * @return
 	 */
 	void insertPracticeMng(@Param("form") SC_01_01_01_practiceDetailInputForm form,
+			@Param("registModule") boolean registModule, @Param("registBibliography") boolean registBibliography,
+			@Param("registWebsite") boolean registWebsite, @Param("registDocument") boolean registDocument,
 			@Param("account") UserAccount account);
 
 	/**

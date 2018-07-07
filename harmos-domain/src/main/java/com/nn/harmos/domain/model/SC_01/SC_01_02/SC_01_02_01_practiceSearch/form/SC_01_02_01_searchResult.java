@@ -2,6 +2,10 @@ package com.nn.harmos.domain.model.SC_01.SC_01_02.SC_01_02_01_practiceSearch.for
 
 import java.io.Serializable;
 
+/**
+ * @author nakashima
+ *
+ */
 public class SC_01_02_01_searchResult implements Serializable {
 
 	/**
@@ -27,22 +31,22 @@ public class SC_01_02_01_searchResult implements Serializable {
 	/**
 	 * モジュール
 	 */
-	private boolean registModule;
+	private String registModule;
 
 	/**
 	 * 参考文献
 	 */
-	private boolean registBibliography;
+	private String registBibliography;
 
 	/**
 	 * 参考サイト
 	 */
-	private boolean registWebSite;
+	private String registWebSite;
 
 	/**
 	 * 参考資料
 	 */
-	private boolean registDocument;
+	private String registDocument;
 
 	/**
 	 * メモ
@@ -101,7 +105,7 @@ public class SC_01_02_01_searchResult implements Serializable {
 	 * モジュールを取得する
 	 * @return モジュール
 	 */
-	public boolean isRegistModule() {
+	public String getRegistModule() {
 		return registModule;
 	}
 
@@ -109,7 +113,7 @@ public class SC_01_02_01_searchResult implements Serializable {
 	 * モジュールを設定する
 	 * @param registModule モジュール
 	 */
-	public void setRegistModule(boolean registModule) {
+	public void setRegistModule(String registModule) {
 		this.registModule = registModule;
 	}
 
@@ -117,7 +121,7 @@ public class SC_01_02_01_searchResult implements Serializable {
 	 * 参考文献を取得する
 	 * @return 参考文献
 	 */
-	public boolean isRegistBibliography() {
+	public String getRegistBibliography() {
 		return registBibliography;
 	}
 
@@ -125,7 +129,7 @@ public class SC_01_02_01_searchResult implements Serializable {
 	 * 参考文献を設定する
 	 * @param registBibliography 参考文献
 	 */
-	public void setRegistBibliography(boolean registBibliography) {
+	public void setRegistBibliography(String registBibliography) {
 		this.registBibliography = registBibliography;
 	}
 
@@ -133,7 +137,7 @@ public class SC_01_02_01_searchResult implements Serializable {
 	 * 参考サイトを取得する
 	 * @return 参考サイト
 	 */
-	public boolean isRegistWebSite() {
+	public String getRegistWebSite() {
 		return registWebSite;
 	}
 
@@ -141,7 +145,7 @@ public class SC_01_02_01_searchResult implements Serializable {
 	 * 参考サイトを設定する
 	 * @param registWebSite 参考サイト
 	 */
-	public void setRegistWebSite(boolean registWebSite) {
+	public void setRegistWebSite(String registWebSite) {
 		this.registWebSite = registWebSite;
 	}
 
@@ -149,7 +153,7 @@ public class SC_01_02_01_searchResult implements Serializable {
 	 * 参考資料を取得する
 	 * @return 参考資料
 	 */
-	public boolean isRegistDocument() {
+	public String getRegistDocument() {
 		return registDocument;
 	}
 
@@ -157,7 +161,7 @@ public class SC_01_02_01_searchResult implements Serializable {
 	 * 参考資料を設定する
 	 * @param registDocument 参考資料
 	 */
-	public void setRegistDocument(boolean registDocument) {
+	public void setRegistDocument(String registDocument) {
 		this.registDocument = registDocument;
 	}
 
@@ -176,5 +180,4 @@ public class SC_01_02_01_searchResult implements Serializable {
 	public void setMemo(String memo) {
 	    this.memo = memo;
 	}
-
 }
