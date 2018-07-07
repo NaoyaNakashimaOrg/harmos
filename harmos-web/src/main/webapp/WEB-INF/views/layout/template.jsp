@@ -20,6 +20,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/app/css/harmosCommon.css">
 <script src="${pageContext.request.contextPath}/resources/app/javaScript/jquery-2.1.4.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/app/javaScript/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/app/javaScript/harmos.js"></script>
 </head>
 <sec:authentication property="principal.userAccount" var="account" />
 
