@@ -115,15 +115,7 @@ function addDocumentForm(){
 }
 
 
-/**
- * ファイル入力フォームへファイル名を反映する
- */
-$(document).on('change', ':file', function() {
-    var input = $(this),
-    numFiles = input.get(0).files ? input.get(0).files.length : 1,
-    label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-    input.parent().parent().next(':text').val(label);
-});
+
 
 </script>
 <title>サンプル登録</title>
@@ -316,6 +308,17 @@ $(document).on('change', ':file', function() {
 		</div>
 		
 </form:form>
+<script>
+/**
+ * ファイル入力フォームへファイル名を反映する
+ */
+$(document).on('change', ':file', function() {
+    var input = $(this),
+    numFiles = input.get(0).files ? input.get(0).files.length : 1,
+    label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+    input.parent().parent().next(':text').val(label);
+});
+</script>
 </body>
 </html>
 
