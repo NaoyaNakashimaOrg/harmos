@@ -174,7 +174,7 @@
 					<col span="1" width="90">
 					<col span="1" width="90">
 					<col span="1" width="90">
-					<col span="1" width="auto">
+					<col span="1" width="300">
 				</colgroup>
 				<thead>
 					<tr>
@@ -193,12 +193,12 @@
 						<tr>
 							<td>${f:h(article.no)}</td>
 							<td><a href="${f:h(article.practiceMngNo)}" target="_blank">${f:h(article.practiceMngNo)}</a></td>
-							<td><span data-toggle="tooltip" title="${f:h(article.overview)}" data-placement="auto">${f:h(article.overview)}</span></td>
+							<td><span data-toggle="tooltip" title="${f:h(article.overview)}" data-placement="left">${f:h(article.overview)}</span></td>
 							<td>${f:h(article.registModule)}</td>
 							<td>${f:h(article.registBibliography)}</td>
 							<td>${f:h(article.registWebSite)}</td>
 							<td>${f:h(article.registDocument)}</td>
-							<td><span data-toggle="tooltip" title="${f:h(article.memo)}" data-placement="auto">${f:h(article.memo)}</span></td>
+							<td><span data-toggle="tooltip" title="${f:h(article.memo)}" data-placement="left">${f:h(article.memo)}</span></td>
 						</tr>
 					</c:forEach>
 				</tbody>
