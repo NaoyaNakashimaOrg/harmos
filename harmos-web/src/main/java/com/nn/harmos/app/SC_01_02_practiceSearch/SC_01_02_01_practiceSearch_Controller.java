@@ -3,6 +3,9 @@ package com.nn.harmos.app.SC_01_02_practiceSearch;
 import javax.inject.Inject;
 
 import org.dozer.Mapper;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +22,7 @@ import com.nn.harmos.domain.model.SC_01.SC_01_02.SC_01_02_01_practiceSearch.form
 import com.nn.harmos.domain.model.SC_01.SC_01_02.SC_01_02_01_practiceSearch.service.SC_01_02_01_001_searchFormServiceInput;
 import com.nn.harmos.domain.model.SC_01.SC_01_02.SC_01_02_01_practiceSearch.service.SC_01_02_01_001_searchFormServiceOutput;
 import com.nn.harmos.domain.model.SC_01.SC_01_02.SC_01_02_01_practiceSearch.service.SC_01_02_01_002_searchServiceInput;
+import com.nn.harmos.domain.model.SC_01.SC_01_02.SC_01_02_01_practiceSearch.service.SC_01_02_01_002_searchServiceOutput;
 import com.nn.harmos.domain.service.SC_01.SC_01_02.SC_01_02_01_practiceSearch.SC_01_02_01_001_searchFormService;
 import com.nn.harmos.domain.service.SC_01.SC_01_02.SC_01_02_01_practiceSearch.SC_01_02_01_002_searchService;
 import com.nn.harmos.domain.service.common.userdetails.HarmosUserDetails;
@@ -95,8 +99,9 @@ public class SC_01_02_01_practiceSearch_Controller {
 	 * @param attributes
 	 * @return
 	 */
-	@RequestMapping(method = RequestMethod.POST, value = "practiceSearch", params = "search")
+	@RequestMapping(method = { RequestMethod.GET, RequestMethod.POST }, value = "practiceSearch", params = { "search" })
 	public String search(@Validated SC_01_02_01_practiceSearchForm form, BindingResult result,
+			@PageableDefault(page = 0, size = 10, direction = Direction.DESC, sort = { "no" }) Pageable pageable,
 			@AuthenticationPrincipal HarmosUserDetails userDetails, Model model, SessionStatus sessionStatus,
 			RedirectAttributes attributes) {
 
@@ -114,12 +119,16 @@ public class SC_01_02_01_practiceSearch_Controller {
 		SC_01_02_01_002_searchServiceInput input = new SC_01_02_01_002_searchServiceInput();
 		input.setAccount(userDetails.getUserAccount());
 		input.setForm(form);
+		input.setPageable(pageable);
 
+		SC_01_02_01_002_searchServiceOutput output = null;
 		try {
-			searchServive.doExecute(input);
+			output = searchServive.doExecute(input);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
+		model.addAttribute("page", output.getPage());
 
 		return "SC_01_02_practiceSearch/SC_01_02_01_practiceSearch";
 	}

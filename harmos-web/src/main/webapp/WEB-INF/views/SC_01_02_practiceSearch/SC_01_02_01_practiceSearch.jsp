@@ -163,70 +163,63 @@
 			</div>
 		</div>
 		
-		<c:if test="${SC_01_02_01_practiceSearchForm != null and fn:length(SC_01_02_01_practiceSearchForm.searchResultList) != 0}">
-		<div class="table-responsive">
-			<table class="table table-striped table-hover">
-				<colgroup>
-					<col span="1" width="50">
-					<col span="1" width="130">
-					<col span="1" width="300">
-					<col span="1" width="90">
-					<col span="1" width="90">
-					<col span="1" width="90">
-					<col span="1" width="90">
-					<col span="1" width="300">
-				</colgroup>
-				<thead>
-					<tr>
-						<th>No.</th>
-						<th>サンプルNO</th>
-						<th>概要</th>
-						<th>モジュール</th>
-						<th>参考文献</th>
-						<th>参考サイト</th>
-						<th>参考資料</th>
-						<th>メモ</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="article" items="${SC_01_02_01_practiceSearchForm.searchResultList}" varStatus="rowStatus">
-						<tr>
-							<td>${f:h(article.no)}</td>
-							<td><a href="${f:h(article.practiceMngNo)}" target="_blank">${f:h(article.practiceMngNo)}</a></td>
-							<td><span data-toggle="tooltip" title="${f:h(article.overview)}" data-placement="left">${f:h(article.overview)}</span></td>
-							<td>${f:h(article.registModule)}</td>
-							<td>${f:h(article.registBibliography)}</td>
-							<td>${f:h(article.registWebSite)}</td>
-							<td>${f:h(article.registDocument)}</td>
-							<td><span data-toggle="tooltip" title="${f:h(article.memo)}" data-placement="left">${f:h(article.memo)}</span></td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-		</div>
-	
-		<div class="row">
-			<div class="harmosPagiNation">
-				<nav>
-				<ul class="pagination">
-					<li><a href="#" aria-label="前のページへ"> <span aria-hidden="true">«</span>
-					</a></li>
-					<li><a href="#">1</a></li>
-					<li class="active"><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">5</a></li>
-					<li><a href="#">6</a></li>
-					<li><a href="#">7</a></li>
-					<li><a href="#">8</a></li>
-					<li><a href="#">9</a></li>
-					<li><a href="#">10</a></li>
-					<li><a href="#" aria-label="次のページへ"> <span aria-hidden="true">»</span>
-					</a></li>
-				</ul>
-				</nav>
+		<c:if test="${page != null && page.totalPages != 0}">
+			<div class="row">
+				<div class="harmosPagiNation">
+					<t:pagination page="${page}"
+						queryTmpl="search&page={page}&size={size}"
+					    outerElementClass="pagination"/>
+			    </div>
 			</div>
-		</div>
+			
+			<div class="table-responsive">
+				<table class="table table-striped table-hover">
+					<colgroup>
+						<col span="1" width="50">
+						<col span="1" width="130">
+						<col span="1" width="300">
+						<col span="1" width="90">
+						<col span="1" width="90">
+						<col span="1" width="90">
+						<col span="1" width="90">
+						<col span="1" width="300">
+					</colgroup>
+					<thead>
+						<tr>
+							<th>No.</th>
+							<th>サンプルNO</th>
+							<th>概要</th>
+							<th>モジュール</th>
+							<th>参考文献</th>
+							<th>参考サイト</th>
+							<th>参考資料</th>
+							<th>メモ</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="article" items="${page.content}" varStatus="rowStatus">
+							<tr>
+								<td>${f:h(article.no)}</td>
+								<td><a href="${f:h(article.practiceMngNo)}" target="_blank">${f:h(article.practiceMngNo)}</a></td>
+								<td><span data-toggle="tooltip" title="${f:h(article.overview)}" data-placement="left">${f:h(article.overview)}</span></td>
+								<td>${f:h(article.registModule)}</td>
+								<td>${f:h(article.registBibliography)}</td>
+								<td>${f:h(article.registWebSite)}</td>
+								<td>${f:h(article.registDocument)}</td>
+								<td><span data-toggle="tooltip" title="${f:h(article.memo)}" data-placement="left">${f:h(article.memo)}</span></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+			
+	        <div class="row">
+				<div class="harmosPagiNation">
+					<t:pagination page="${page}"
+						queryTmpl="search&page={page}&size={size}"
+					    outerElementClass="pagination"/>
+			    </div>
+			</div>
 		</c:if>
 		
 </form:form>
