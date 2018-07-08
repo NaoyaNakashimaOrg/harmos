@@ -200,7 +200,7 @@
 						<c:forEach var="article" items="${page.content}" varStatus="rowStatus">
 							<tr>
 								<td>${f:h(article.no)}</td>
-								<td><a href="${f:h(article.practiceMngNo)}" target="_blank">${f:h(article.practiceMngNo)}</a></td>
+								<td><a href="${pageContext.request.contextPath}/SC_01_01_02/practiceDetailInquiry?inquiryForm&key=${f:h(article.practiceMngNo)}" target="_blank">${f:h(article.practiceMngNo)}</a></td>
 								<td><span data-toggle="tooltip" title="${f:h(article.overview)}" data-placement="left">${f:h(article.overview)}</span></td>
 								<td>${f:h(article.registModule)}</td>
 								<td>${f:h(article.registBibliography)}</td>
