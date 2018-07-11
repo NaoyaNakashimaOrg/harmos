@@ -9,7 +9,7 @@
  */
 function addModuleForm() {
 	
-	var moduleListMaxIndex = $('.moduleList').size();
+	var moduleListMaxIndex = $('.moduleList').length;
 	var template = '<div id="moduleList' + moduleListMaxIndex + '" class="row moduleList">' + 
 						'<div class="col-md-2">' + 
 							'<div class="margin2Box"></div>' + 
@@ -25,7 +25,7 @@ function addModuleForm() {
 								'<label class="input-group-btn" >' + 
 									'<span class="btn btn-primary" >' + 
 										'<span class="glyphicon glyphicon-file"></span>' + 
-										'<input type="file" name="moduleList[' + {moduleListMaxIndex} + '].module" style="display:none">' + 
+										'<input type="file" name="moduleList[' + (moduleListMaxIndex) + '].module" style="display:none">' + 
 									'</span>' + 
 								'</label>' + 
 								'<input type="text" class="form-control" readonly="readonly">' + 
@@ -40,7 +40,7 @@ function addModuleForm() {
  */
 function addBibliographyForm(){
 	
-	var bibliographyListMaxIndex = $('.bibliographyList').size();
+	var bibliographyListMaxIndex = $('.bibliographyList').length;
 	var template = '<div id="bibliographyList' + bibliographyListMaxIndex + '" class="row bibliographyList">' + 
 						'<div class="col-md-2">' + 
 							'<div class="margin2Box"></div>' + 
@@ -64,7 +64,7 @@ function addBibliographyForm(){
  */
 function addWebSiteForm(){
 	
-	var webSiteListMaxIndex = $('.webSiteList').size();
+	var webSiteListMaxIndex = $('.webSiteList').length;
 	var template = '<div id="webSiteList' + webSiteListMaxIndex + '" class="row webSiteList">' + 
 						'<div class="col-md-2">' + 
 							'<div class="margin2Box"></div>' + 
@@ -88,7 +88,7 @@ function addWebSiteForm(){
  */
 function addDocumentForm(){
 	
-	var documentListMaxIndex = $('.documentList').size();
+	var documentListMaxIndex = $('.documentList').length;
 	var template = '<div id="documentList' + documentListMaxIndex + '" class="row documentList">' + 
 						'<div class="col-md-2">' + 
 							'<div class="margin2Box"></div>' + 
@@ -104,7 +104,7 @@ function addDocumentForm(){
 								'<label class="input-group-btn" >' + 
 									'<span class="btn btn-primary" >' + 
 										'<span class="glyphicon glyphicon-file"></span>' + 
-										'<input type="file" name="documentList[' + {documentListMaxIndex} + '].document" style="display:none">' + 
+										'<input type="file" name="documentList[' + (documentListMaxIndex) + '].document" style="display:none">' + 
 									'</span>' + 
 								'</label>' + 
 								'<input type="text" class="form-control" readonly="readonly">' + 
@@ -114,7 +114,15 @@ function addDocumentForm(){
 	$('#documentList' + (documentListMaxIndex - 1)).after(template);
 }
 
-
+/**
+ * ファイル入力フォームへファイル名を反映する
+ */
+$(document).on('change', ':file', function() {
+    var input = $(this),
+    numFiles = input.get(0).files ? input.get(0).files.length : 1,
+    label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+    input.parent().parent().next(':text').val(label);
+});
 
 
 </script>
@@ -125,7 +133,7 @@ function addDocumentForm(){
 	action="${pageContext.request.contextPath}/SC_01_01_01/practiceDetailInput" enctype="multipart/form-data">
 	
 	<form:errors path="*" element="div" cssClass="alert alert-danger" />
-	
+	<t:messagesPanel panelClassName="alert alert-danger"/>
 	
     <div class="panel panel-primary">
 			<div class="panel-heading">
@@ -308,17 +316,6 @@ function addDocumentForm(){
 		</div>
 		
 </form:form>
-<script>
-/**
- * ファイル入力フォームへファイル名を反映する
- */
-$(document).on('change', ':file', function() {
-    var input = $(this),
-    numFiles = input.get(0).files ? input.get(0).files.length : 1,
-    label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-    input.parent().parent().next(':text').val(label);
-});
-</script>
 </body>
 </html>
 
