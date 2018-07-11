@@ -2,8 +2,6 @@ package com.nn.harmos.domain.model.SC_01.SC_01_01.SC_01_01_01_practiceDetailInpu
 
 import java.io.Serializable;
 
-import javax.validation.constraints.Size;
-
 public class SC_01_01_01_bibliographyForm implements Serializable {
 
 	/**
@@ -14,45 +12,49 @@ public class SC_01_01_01_bibliographyForm implements Serializable {
 	/**
 	 * 参考文献名称
 	 */
-	@Size(min = 0, max = 100)
 	private String name;
 
 	/**
 	 * 参考文献出版社
 	 */
-	@Size(min = 0, max = 20)
 	private String publisher;
 
 	/**
 	 * 参考文献名称を取得する
+	 * 
 	 * @return 参考文献名称
 	 */
 	public String getName() {
-	    return name;
+		return name;
 	}
 
 	/**
 	 * 参考文献名称を設定する
-	 * @param name 参考文献名称
+	 * 
+	 * @param name
+	 *            参考文献名称
 	 */
 	public void setName(String name) {
-	    this.name = name;
+		this.name = name;
 	}
 
 	/**
 	 * 参考文献出版社を取得する
+	 * 
 	 * @return 参考文献出版社
 	 */
 	public String getPublisher() {
-	    return publisher;
+		return publisher;
 	}
 
 	/**
 	 * 参考文献出版社を設定する
-	 * @param publisher 参考文献出版社
+	 * 
+	 * @param publisher
+	 *            参考文献出版社
 	 */
 	public void setPublisher(String publisher) {
-	    this.publisher = publisher;
+		this.publisher = publisher;
 	}
 
 }

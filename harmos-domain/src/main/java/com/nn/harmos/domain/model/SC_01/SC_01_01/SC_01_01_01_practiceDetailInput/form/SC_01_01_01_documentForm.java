@@ -2,8 +2,6 @@ package com.nn.harmos.domain.model.SC_01.SC_01_01.SC_01_01_01_practiceDetailInpu
 
 import java.io.Serializable;
 
-import javax.validation.constraints.Size;
-
 import org.springframework.web.multipart.MultipartFile;
 
 public class SC_01_01_01_documentForm implements Serializable {
@@ -16,7 +14,6 @@ public class SC_01_01_01_documentForm implements Serializable {
 	/**
 	 * 参考資料概要
 	 */
-	@Size(min = 0, max = 100)
 	private String overview;
 
 	/**
@@ -45,18 +42,21 @@ public class SC_01_01_01_documentForm implements Serializable {
 
 	/**
 	 * 参考資料を取得する
+	 * 
 	 * @return 参考資料
 	 */
 	public MultipartFile getDocument() {
-	    return document;
+		return document;
 	}
 
 	/**
 	 * 参考資料を設定する
-	 * @param document 参考資料
+	 * 
+	 * @param document
+	 *            参考資料
 	 */
 	public void setDocument(MultipartFile document) {
-	    this.document = document;
+		this.document = document;
 	}
 
 }

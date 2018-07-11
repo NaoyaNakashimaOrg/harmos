@@ -36,26 +36,87 @@ public class SC_01_01_01_002_registerService
 	@Inject
 	SC_01_01_01_practiceDetailInputRepository practiceDetailInputRepository;
 
+	// 単項目チェック用サイズ定義
+	private final int moduleOverviewMin = 0;
+	private final int moduleOverviewMax = 100;
+	private final int bibliographyNameMin = 0;
+	private final int bibliographyNameMax = 100;
+	private final int publisherMin = 0;
+	private final int publisherMax = 20;
+	private final int websiteOverviewMin = 0;
+	private final int websiteOverviewMax = 100;
+	private final int websiteUrlMin = 0;
+	private final int websiteUrlMax = 1000;
+	private final int documentOverviewMin = 0;
+	private final int documentOverviewMax = 100;
+
 	@Override
 	public SC_01_01_01_002_RegisterServiceOutput doExecute(SC_01_01_01_002_RegisterServiceInput input) {
 
 		UserAccount account = input.getAccount();
 		SC_01_01_01_practiceDetailInputForm form = input.getForm();
+		List<SC_01_01_01_moduleForm> moduleList = form.getModuleList();
+		List<SC_01_01_01_bibliographyForm> bibliographyList = form.getBibliographyList();
+		List<SC_01_01_01_webSiteForm> webSiteList = form.getWebSiteList();
+		List<SC_01_01_01_documentForm> documentList = form.getDocumentList();
 		ResultMessages resultMessages = ResultMessages.error();
 
 		// ■ 単項目チェック
-		// モジュール、参考文献、参考サイト、参考資料に関しては動的なフォームの増減を許容しているため、サービスにて短項目チェックを実施する.
+		// モジュール、参考文献、参考サイト、参考資料に関しては動的なフォームの増減を許容しているため、サービスにて単項目チェックを実施する.
 		boolean hasError = false;
-		List<SC_01_01_01_moduleForm> moduleList = form.getModuleList();
-		int moduleOverviewMin = 0;
-		int moduleOverviewMax = 100;
+		// モジュール
 		int moduleValidateIndex = 1;
 		for (SC_01_01_01_moduleForm module : moduleList) {
 			if (!SizeValidatorForArraysOfChar.isValid(module.getOverview().toCharArray(), moduleOverviewMin,
 					moduleOverviewMax)) {
-				// モジュールがセットで入力されていなければエラー
 				resultMessages.add("e.hw.SC_01_01_01.0001", moduleValidateIndex + "番目のモジュール概要", moduleOverviewMin,
 						moduleOverviewMax);
+				hasError = true;
+			}
+		}
+
+		// 参考文献
+		int bibliographyValidateIndex = 1;
+		for (SC_01_01_01_bibliographyForm bibliography : bibliographyList) {
+			if (!SizeValidatorForArraysOfChar.isValid(bibliography.getName().toCharArray(), bibliographyNameMin,
+					bibliographyNameMax)) {
+				resultMessages.add("e.hw.SC_01_01_01.0001", bibliographyValidateIndex + "番目の文献名", bibliographyNameMin,
+						bibliographyNameMax);
+				hasError = true;
+			}
+
+			if (!SizeValidatorForArraysOfChar.isValid(bibliography.getPublisher().toCharArray(), publisherMin,
+					publisherMax)) {
+				resultMessages.add("e.hw.SC_01_01_01.0001", bibliographyValidateIndex + "番目の出版社", publisherMin,
+						publisherMax);
+				hasError = true;
+			}
+		}
+
+		// 参考サイト
+		int websiteValidateIndex = 1;
+		for (SC_01_01_01_webSiteForm webSite : webSiteList) {
+			if (!SizeValidatorForArraysOfChar.isValid(webSite.getOverview().toCharArray(), websiteOverviewMin,
+					websiteOverviewMax)) {
+				resultMessages.add("e.hw.SC_01_01_01.0001", websiteValidateIndex + "番目のWEBサイト概要", websiteOverviewMin,
+						websiteOverviewMax);
+				hasError = true;
+			}
+
+			if (!SizeValidatorForArraysOfChar.isValid(webSite.getUrl().toCharArray(), websiteUrlMin, websiteUrlMax)) {
+				resultMessages.add("e.hw.SC_01_01_01.0001", websiteValidateIndex + "番目のURL", websiteUrlMin,
+						websiteUrlMax);
+				hasError = true;
+			}
+		}
+
+		// 参考資料
+		int documentValidateIndex = 1;
+		for (SC_01_01_01_documentForm document : documentList) {
+			if (!SizeValidatorForArraysOfChar.isValid(document.getOverview().toCharArray(), documentOverviewMin,
+					documentOverviewMax)) {
+				resultMessages.add("e.hw.SC_01_01_01.0001", documentValidateIndex + "番目の参考資料概要", documentOverviewMin,
+						documentOverviewMax);
 				hasError = true;
 			}
 		}
@@ -77,7 +138,6 @@ public class SC_01_01_01_002_registerService
 			}
 		}
 
-		List<SC_01_01_01_bibliographyForm> bibliographyList = form.getBibliographyList();
 		for (SC_01_01_01_bibliographyForm bibliography : bibliographyList) {
 			if (StringUtils.isNotBlank(bibliography.getName()) || StringUtils.isNotBlank(bibliography.getPublisher())) {
 				if (StringUtils.isBlank(bibliography.getName()) || StringUtils.isBlank(bibliography.getPublisher())) {
@@ -89,7 +149,6 @@ public class SC_01_01_01_002_registerService
 			}
 		}
 
-		List<SC_01_01_01_webSiteForm> webSiteList = form.getWebSiteList();
 		for (SC_01_01_01_webSiteForm webSite : webSiteList) {
 			if (StringUtils.isNotBlank(webSite.getOverview()) || StringUtils.isNotBlank(webSite.getUrl())) {
 				if (StringUtils.isBlank(webSite.getOverview()) || StringUtils.isBlank(webSite.getUrl())) {
@@ -101,7 +160,6 @@ public class SC_01_01_01_002_registerService
 			}
 		}
 
-		List<SC_01_01_01_documentForm> documentList = form.getDocumentList();
 		for (SC_01_01_01_documentForm document : documentList) {
 			if (StringUtils.isNotBlank(document.getOverview()) || FileUtils.isValid(document.getDocument())) {
 				if (StringUtils.isBlank(document.getOverview()) || !FileUtils.isValid(document.getDocument())) {
@@ -122,6 +180,8 @@ public class SC_01_01_01_002_registerService
 		final String practiceMngNo = practiceDetailInputRepository.numberingPracticeMngNo();
 		form.setPracticeMngNo(practiceMngNo);
 
+		// ■ 下記変数を宣言する.
+		// （後続のサンプル管理登録処理にて使用）
 		// モジュール登録フラグ
 		boolean registModule = false;
 		// 参考文献登録フラグ

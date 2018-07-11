@@ -3,7 +3,6 @@ package com.nn.harmos.domain.model.SC_01.SC_01_01.SC_01_01_01_practiceDetailInpu
 import java.io.Serializable;
 import java.util.List;
 
-import javax.validation.Valid;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -58,13 +57,11 @@ public class SC_01_01_01_practiceDetailInputForm implements Serializable {
 	/**
 	 * 参考サイトリスト
 	 */
-	@Valid
 	private List<SC_01_01_01_webSiteForm> webSiteList;
 
 	/**
 	 * 参考資料 リスト
 	 */
-	@Valid
 	private List<SC_01_01_01_documentForm> documentList;
 
 	/**
