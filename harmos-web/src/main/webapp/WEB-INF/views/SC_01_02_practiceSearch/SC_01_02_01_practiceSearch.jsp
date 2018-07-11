@@ -11,6 +11,7 @@
 	action="${pageContext.request.contextPath}/SC_01_02_01/practiceSearch">
 	
 	<form:errors path="*" element="div" cssClass="alert alert-danger" />
+	<t:messagesPanel panelClassName="alert alert-danger"/>
 	
 	<div class="panel panel-primary">
 			<div class="panel-heading">
@@ -42,7 +43,7 @@
 					</div>
 					<div class="col-md-6">
 						<div class="margin2Box">
-							<form:input id="overview" class="form-control" placeholder="" path="searchCondition.overview"/>
+							<form:input id="overview" class="form-control" cssErrorClass="form-group has-error" placeholder="" path="searchCondition.overview"/>
 						</div>
 					</div>
 					<div class="col-md-2">

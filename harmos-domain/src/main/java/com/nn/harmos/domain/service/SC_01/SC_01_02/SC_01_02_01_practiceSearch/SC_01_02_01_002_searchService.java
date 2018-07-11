@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.terasoluna.gfw.common.exception.BusinessException;
+import org.terasoluna.gfw.common.message.ResultMessages;
 
 import com.nn.harmos.domain.model.SC_01.SC_01_02.SC_01_02_01_practiceSearch.form.SC_01_02_01_practiceSearchForm;
 import com.nn.harmos.domain.model.SC_01.SC_01_02.SC_01_02_01_practiceSearch.form.SC_01_02_01_searchResult;
@@ -30,23 +31,27 @@ public class SC_01_02_01_002_searchService
 	SC_01_02_01_practiceSearchRepository practiceSearchRepository;
 
 	@Override
-	public SC_01_02_01_002_searchServiceOutput doExecute(SC_01_02_01_002_searchServiceInput input) throws Exception {
+	public SC_01_02_01_002_searchServiceOutput doExecute(SC_01_02_01_002_searchServiceInput input) {
 
 		SC_01_02_01_practiceSearchForm form = input.getForm();
 		Pageable pageable = input.getPageable();
+		ResultMessages resultMessages = ResultMessages.error();
+		SC_01_02_01_002_searchServiceOutput output = new SC_01_02_01_002_searchServiceOutput();
 
+		// ■ 一覧件数取得
 		long count = practiceSearchRepository.count(form.getSearchCondition());
 
 		if (count == 0) {
-			// TODO
-			throw new BusinessException("");
+			// 検索結果が0件の場合、処理を終了する.
+			resultMessages.add("e.hw.common.0001");
+			throw new BusinessException(resultMessages);
 		}
 
+		// ■ 一覧情報取得
 		RowBounds rowBounds = new RowBounds(pageable.getOffset(), pageable.getPageSize());
 		List<SC_01_02_01_searchResult> searchResultList = practiceSearchRepository.search(form.getSearchCondition(),
 				rowBounds);
 
-		SC_01_02_01_002_searchServiceOutput output = new SC_01_02_01_002_searchServiceOutput();
 		output.setForm(form);
 		output.setPage(new PageImpl<>(searchResultList, pageable, count));
 		return output;

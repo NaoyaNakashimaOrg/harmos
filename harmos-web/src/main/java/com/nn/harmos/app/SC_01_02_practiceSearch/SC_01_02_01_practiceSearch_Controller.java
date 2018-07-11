@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.terasoluna.gfw.common.exception.BusinessException;
+import org.terasoluna.gfw.common.message.ResultMessages;
 
 import com.nn.harmos.domain.model.SC_01.SC_01_02.SC_01_02_01_practiceSearch.form.SC_01_02_01_practiceSearchForm;
 import com.nn.harmos.domain.model.SC_01.SC_01_02.SC_01_02_01_practiceSearch.service.SC_01_02_01_001_searchFormServiceInput;
@@ -124,8 +126,14 @@ public class SC_01_02_01_practiceSearch_Controller {
 		SC_01_02_01_002_searchServiceOutput output = null;
 		try {
 			output = searchServive.doExecute(input);
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (BusinessException e) {
+			ResultMessages messages = e.getResultMessages();
+			model.addAttribute(messages);
+			return "SC_01_02_practiceSearch/SC_01_02_01_practiceSearch";
+		}
+
+		if (output.getResultMessages() != null) {
+			model.addAttribute(output.getResultMessages());
 		}
 
 		model.addAttribute("page", output.getPage());

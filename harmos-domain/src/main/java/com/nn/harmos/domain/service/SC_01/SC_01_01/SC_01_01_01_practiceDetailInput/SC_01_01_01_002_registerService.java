@@ -1,5 +1,6 @@
 package com.nn.harmos.domain.service.SC_01.SC_01_01.SC_01_01_01_practiceDetailInput;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import org.terasoluna.gfw.common.exception.BusinessException;
+import org.terasoluna.gfw.common.message.ResultMessages;
 
 import com.nn.harmos.domain.model.SC_01.SC_01_01.SC_01_01_01_practiceDetailInput.form.SC_01_01_01_bibliographyForm;
 import com.nn.harmos.domain.model.SC_01.SC_01_01.SC_01_01_01_practiceDetailInput.form.SC_01_01_01_documentForm;
@@ -20,6 +22,7 @@ import com.nn.harmos.domain.model.SC_01.SC_01_01.SC_01_01_01_practiceDetailInput
 import com.nn.harmos.domain.model.common.UserAccount;
 import com.nn.harmos.domain.repository.SC_01.SC_01_01.SC_01_01_01_practiceDetailInputRepository;
 import com.nn.harmos.domain.service.common.fw.AbstractService;
+import com.nn.harmos.domain.service.common.validator.SizeValidatorForArraysOfChar;
 import com.nn.harmos.domain.util.FileUtils;
 
 @Service
@@ -34,20 +37,42 @@ public class SC_01_01_01_002_registerService
 	SC_01_01_01_practiceDetailInputRepository practiceDetailInputRepository;
 
 	@Override
-	public SC_01_01_01_002_RegisterServiceOutput doExecute(SC_01_01_01_002_RegisterServiceInput input)
-			throws Exception {
+	public SC_01_01_01_002_RegisterServiceOutput doExecute(SC_01_01_01_002_RegisterServiceInput input) {
 
 		UserAccount account = input.getAccount();
 		SC_01_01_01_practiceDetailInputForm form = input.getForm();
+		ResultMessages resultMessages = ResultMessages.error();
+
+		// ■ 単項目チェック
+		// モジュール、参考文献、参考サイト、参考資料に関しては動的なフォームの増減を許容しているため、サービスにて短項目チェックを実施する.
+		boolean hasError = false;
+		List<SC_01_01_01_moduleForm> moduleList = form.getModuleList();
+		int moduleOverviewMin = 0;
+		int moduleOverviewMax = 100;
+		int moduleValidateIndex = 1;
+		for (SC_01_01_01_moduleForm module : moduleList) {
+			if (!SizeValidatorForArraysOfChar.isValid(module.getOverview().toCharArray(), moduleOverviewMin,
+					moduleOverviewMax)) {
+				// モジュールがセットで入力されていなければエラー
+				resultMessages.add("e.hw.SC_01_01_01.0001", moduleValidateIndex + "番目のモジュール概要", moduleOverviewMin,
+						moduleOverviewMax);
+				hasError = true;
+			}
+		}
+
+		if (hasError) {
+			// 短項目チェックを実施した結果1件でもエラーがある場合、業務例外処理を実施.
+			throw new BusinessException(resultMessages);
+		}
 
 		// ■ 相関チェック
-		List<SC_01_01_01_moduleForm> moduleList = form.getModuleList();
 		for (SC_01_01_01_moduleForm module : moduleList) {
 			if (StringUtils.isNotBlank(module.getOverview()) || FileUtils.isValid(module.getModule())) {
 				if (StringUtils.isBlank(module.getOverview()) || !FileUtils.isValid(module.getModule())) {
 					// モジュールがセットで入力されていなければエラー
-					// TODO
-					throw new BusinessException("");
+					resultMessages.add("e.hw.SC_01_01_01.0002", "モジュール", "概要", "ファイル");
+					hasError = true;
+					break;
 				}
 			}
 		}
@@ -57,8 +82,9 @@ public class SC_01_01_01_002_registerService
 			if (StringUtils.isNotBlank(bibliography.getName()) || StringUtils.isNotBlank(bibliography.getPublisher())) {
 				if (StringUtils.isBlank(bibliography.getName()) || StringUtils.isBlank(bibliography.getPublisher())) {
 					// 参考文献がセットで入力されていなければエラー
-					// TODO
-					throw new BusinessException("");
+					resultMessages.add("e.hw.SC_01_01_01.0002", "参考文献", "文献名", "出版社");
+					hasError = true;
+					break;
 				}
 			}
 		}
@@ -68,8 +94,9 @@ public class SC_01_01_01_002_registerService
 			if (StringUtils.isNotBlank(webSite.getOverview()) || StringUtils.isNotBlank(webSite.getUrl())) {
 				if (StringUtils.isBlank(webSite.getOverview()) || StringUtils.isBlank(webSite.getUrl())) {
 					// 参考サイトがセットで入力されていなければエラー
-					// TODO
-					throw new BusinessException("");
+					resultMessages.add("e.hw.SC_01_01_01.0002", "参考サイト", "概要", "URL");
+					hasError = true;
+					break;
 				}
 			}
 		}
@@ -79,10 +106,16 @@ public class SC_01_01_01_002_registerService
 			if (StringUtils.isNotBlank(document.getOverview()) || FileUtils.isValid(document.getDocument())) {
 				if (StringUtils.isBlank(document.getOverview()) || !FileUtils.isValid(document.getDocument())) {
 					// 参考資料がセットで入力されていなければエラー
-					// TODO
-					throw new BusinessException("");
+					resultMessages.add("e.hw.SC_01_01_01.0002", "参考資料", "概要", "ファイル");
+					hasError = true;
+					break;
 				}
 			}
+		}
+
+		if (hasError) {
+			// 相関項目チェックを実施した結果1件でもエラーがある場合、業務例外処理を実施.
+			throw new BusinessException(resultMessages);
 		}
 
 		// ■ サンプル管理番号の採番
@@ -103,8 +136,12 @@ public class SC_01_01_01_002_registerService
 		for (SC_01_01_01_moduleForm moduleForm : moduleList) {
 			if (StringUtils.isNotBlank(moduleForm.getOverview())) {
 				MultipartFile module = moduleForm.getModule();
-				practiceDetailInputRepository.insertPracticeModule(form.getPracticeMngNo(), moduleIndex,
-						moduleForm.getOverview(), module.getOriginalFilename(), module.getInputStream(), account);
+				try {
+					practiceDetailInputRepository.insertPracticeModule(form.getPracticeMngNo(), moduleIndex,
+							moduleForm.getOverview(), module.getOriginalFilename(), module.getInputStream(), account);
+				} catch (IOException e) {
+					resultMessages.add("e.hw.SC_01_01_01.0002", module.getOriginalFilename());
+				}
 				registModule = true;
 				moduleIndex++;
 			}
@@ -137,8 +174,13 @@ public class SC_01_01_01_002_registerService
 		for (SC_01_01_01_documentForm documentForm : documentList) {
 			if (StringUtils.isNotBlank(documentForm.getOverview())) {
 				MultipartFile document = documentForm.getDocument();
-				practiceDetailInputRepository.insertPracticeDocment(form.getPracticeMngNo(), documentIndex,
-						documentForm.getOverview(), document.getOriginalFilename(), document.getInputStream(), account);
+				try {
+					practiceDetailInputRepository.insertPracticeDocment(form.getPracticeMngNo(), documentIndex,
+							documentForm.getOverview(), document.getOriginalFilename(), document.getInputStream(),
+							account);
+				} catch (IOException e) {
+					resultMessages.add("e.hw.SC_01_01_01.0002", document.getOriginalFilename());
+				}
 				registDocument = true;
 				documentIndex++;
 			}

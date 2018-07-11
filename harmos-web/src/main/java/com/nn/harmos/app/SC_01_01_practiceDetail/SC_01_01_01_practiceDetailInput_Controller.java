@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.terasoluna.gfw.common.exception.BusinessException;
+import org.terasoluna.gfw.common.message.ResultMessages;
 import org.terasoluna.gfw.web.token.transaction.TransactionTokenCheck;
 import org.terasoluna.gfw.web.token.transaction.TransactionTokenType;
 
@@ -79,7 +81,7 @@ public class SC_01_01_01_practiceDetailInput_Controller {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		// ---------------------------------------------------------------------
 		// モデルへフォームを追加
 		// ---------------------------------------------------------------------
@@ -125,8 +127,10 @@ public class SC_01_01_01_practiceDetailInput_Controller {
 
 		try {
 			registerService.doExecute(input);
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (BusinessException e) {
+			ResultMessages messages = e.getResultMessages();
+			model.addAttribute(messages);
+			return "SC_01_01_practiceDetail/SC_01_01_01_practiceDetailInput";
 		}
 
 		// ---------------------------------------------------------------------

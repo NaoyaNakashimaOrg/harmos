@@ -48,13 +48,11 @@ public class SC_01_01_01_practiceDetailInputForm implements Serializable {
 	/**
 	 * モジュールリスト
 	 */
-	@Valid
 	private List<SC_01_01_01_moduleForm> moduleList;
 
 	/**
 	 * 参考文献リスト
 	 */
-	@Valid
 	private List<SC_01_01_01_bibliographyForm> bibliographyList;
 
 	/**
@@ -115,18 +113,21 @@ public class SC_01_01_01_practiceDetailInputForm implements Serializable {
 
 	/**
 	 * カテゴリリストを取得する
+	 * 
 	 * @return カテゴリリスト
 	 */
 	public List<KbnCode> getCategoryList() {
-	    return categoryList;
+		return categoryList;
 	}
 
 	/**
 	 * カテゴリリストを設定する
-	 * @param categoryList カテゴリリスト
+	 * 
+	 * @param categoryList
+	 *            カテゴリリスト
 	 */
 	public void setCategoryList(List<KbnCode> categoryList) {
-	    this.categoryList = categoryList;
+		this.categoryList = categoryList;
 	}
 
 	/**
